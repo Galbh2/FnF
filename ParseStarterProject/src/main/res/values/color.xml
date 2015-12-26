@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="romaine_lettuce">#3B5323</color>
+    <color name="pea">#78AB46</color>
+    <color name="primaryColor">#7cb342</color>
+    <color name="primaryColorDark">#689f38</color>
+    <color name="accentColor">#F1FFFA</color>
+
+
+</resources>

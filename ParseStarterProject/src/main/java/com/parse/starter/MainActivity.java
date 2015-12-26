@@ -11,6 +11,8 @@ package com.parse.starter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -18,7 +20,9 @@ import com.parse.ParseAnalytics;
 import com.parse.ParseObject;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
+
+  private RecyclerView recyclerView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

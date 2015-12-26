@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/D:/AndroidWorkSpace/parse/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-v14/values-v14.xml -->
+    <!-- From: file:/E:/AndroidWorkspace/FnF/ParseStarterProject/src/main/res/values-v14/styles.xml -->
+    <eat-comment/>
+    <style name="AppTheme" parent="AppTheme.Base">
+
+
+    </style>
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryColorDark</item>
+        <item name="colorAccent">@color/accentColor</item>
+
+    </style>
+    <!-- From: file:/E:/AndroidWorkspace/FnF/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/values-v14/values-v14.xml -->
     <eat-comment/>
     <style name="Base.TextAppearance.AppCompat.Button">
         <item name="android:textSize">@dimen/abc_text_size_button_material</item>
@@ -28,4 +41,11 @@
     </style>
     <style name="TextAppearance.StatusBar.EventContent.Time"/>
     <style name="TextAppearance.StatusBar.EventContent.Title" parent="@android:style/TextAppearance.StatusBar.EventContent.Title"/>
+    <!-- From: file:/E:/AndroidWorkspace/FnF/ParseStarterProject/src/main/res/values-v14/styles.xml -->
+    <eat-comment/>
+    <style name="ToolBarTheme" parent="ThemeOverlay.AppCompat.Dark">
+
+        <item name="android:textColorPrimary">#464E47</item>
+
+    </style>
 </resources>
