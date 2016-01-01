@@ -2,46 +2,60 @@
 <items version="2" >
 
     <item
-        jar="D:\AndroidWorkSpace\parse\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jar="C:\Users\Gal\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="D:\AndroidWorkSpace\parse\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-634aba6a9cebe8abed5a22f94f67f8aae38e9d9a.jar" />
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="E:\AndroidWorkspace\FnF\ParseStarterProject\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-fd6e3099a0f621874ca6ef976402bf458ad996d0.jar" />
+    </item>
+    <item
+        jar="E:\AndroidWorkspace\FnF\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\design\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
+        <dex dex="E:\AndroidWorkspace\FnF\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-706c523f25c122a8cdc17192bc24c8ccb84afc60.jar" />
+    </item>
+    <item
+        jar="E:\AndroidWorkspace\FnF\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="E:\AndroidWorkspace\FnF\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-9aeb7b0ec87d6ba9d430b8cca6528d10d91bb370.jar" />
+    </item>
+    <item
+        jar="E:\AndroidWorkspace\FnF\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="E:\AndroidWorkspace\FnF\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-bd0e1f52b814175a0e6f253b47b58c5a43c731c5.jar" />
     </item>
     <item
         jar="C:\Users\Gal\.gradle\caches\modules-2\files-2.1\com.parse\parse-android\1.11.0\6592129dec2caa8791d322c7e4b6b7a30e8eadae\parse-android-1.11.0.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="6592129dec2caa8791d322c7e4b6b7a30e8eadae">
-        <dex dex="D:\AndroidWorkSpace\parse\ParseStarterProject\build\intermediates\pre-dexed\debug\parse-android-1.11.0-1ffe903f7d62c7625f724dc7a4b46bd979acd3fa.jar" />
+        <dex dex="E:\AndroidWorkspace\FnF\ParseStarterProject\build\intermediates\pre-dexed\debug\parse-android-1.11.0-1ffe903f7d62c7625f724dc7a4b46bd979acd3fa.jar" />
     </item>
     <item
-        jar="C:\Users\Gal\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jar="E:\AndroidWorkspace\FnF\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="D:\AndroidWorkSpace\parse\ParseStarterProject\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-6ba1fbb981461b7b4b7802b9aa95fca8655f86e3.jar" />
+        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
+        <dex dex="E:\AndroidWorkspace\FnF\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-0fc2feda90588421d030a14a74312aa694b72956.jar" />
     </item>
     <item
-        jar="D:\AndroidWorkSpace\parse\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jar="E:\AndroidWorkspace\FnF\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="D:\AndroidWorkSpace\parse\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-3aadf28b7df6a04d240a402107a4e6ad505c0da6.jar" />
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="E:\AndroidWorkspace\FnF\ParseStarterProject\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-ea1dbb545a446b9ea61ba6b367ba688ff69f174d.jar" />
     </item>
     <item
         jar="C:\Users\Gal\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.3.0\8a62fd16fcc1c06f284fc98e6cbded2a5af1dd4c\bolts-tasks-1.3.0.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="8a62fd16fcc1c06f284fc98e6cbded2a5af1dd4c">
-        <dex dex="D:\AndroidWorkSpace\parse\ParseStarterProject\build\intermediates\pre-dexed\debug\bolts-tasks-1.3.0-2b38449aeb4be088dedf72049b99583879b38a65.jar" />
-    </item>
-    <item
-        jar="D:\AndroidWorkSpace\parse\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="D:\AndroidWorkSpace\parse\ParseStarterProject\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-2a05d5bba64b2c0473e9dd30504b5c9b048d9cb0.jar" />
+        <dex dex="E:\AndroidWorkspace\FnF\ParseStarterProject\build\intermediates\pre-dexed\debug\bolts-tasks-1.3.0-2b38449aeb4be088dedf72049b99583879b38a65.jar" />
     </item>
 
 </items>
