@@ -20,7 +20,7 @@
     <color name="abc_search_url_text_selected">@android:color/black</color>
     <!-- From: file:/E:/AndroidWorkspace/FnF/ParseStarterProject/src/main/res/values/color.xml -->
     <eat-comment/>
-    <color name="accentColor">#F1FFFA</color>
+    <color name="accentColor">#E9EDDE</color>
     <!-- From: file:/E:/AndroidWorkspace/FnF/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/values/values.xml -->
     <eat-comment/>
     <color name="accent_material_dark">@color/material_deep_teal_200</color>
@@ -74,9 +74,9 @@
     <color name="material_grey_900">#ff212121</color>
     <!-- From: file:/E:/AndroidWorkspace/FnF/ParseStarterProject/src/main/res/values/color.xml -->
     <eat-comment/>
-    <color name="pea">#78AB46</color>
-    <color name="primaryColor">#7cb342</color>
-    <color name="primaryColorDark">#689f38</color>
+    <color name="place_layout_color">#E9EDDE</color>
+    <color name="primaryColor">#639FAB</color>
+    <color name="primaryColorDark">#639FAB</color>
     <!-- From: file:/E:/AndroidWorkspace/FnF/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/values/values.xml -->
     <eat-comment/>
     <color name="primary_dark_material_dark">@android:color/black</color>
@@ -87,13 +87,13 @@
     <color name="primary_text_default_material_light">#de000000</color>
     <color name="primary_text_disabled_material_dark">#4Dffffff</color>
     <color name="primary_text_disabled_material_light">#39000000</color>
-    <color name="ripple_material_dark">#33ffffff</color>
-    <color name="ripple_material_light">#1f000000</color>
     <!-- From: file:/E:/AndroidWorkspace/FnF/ParseStarterProject/src/main/res/values/color.xml -->
     <eat-comment/>
-    <color name="romaine_lettuce">#3B5323</color>
+    <color name="recycler_view_background">#474747</color>
     <!-- From: file:/E:/AndroidWorkspace/FnF/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/values/values.xml -->
     <eat-comment/>
+    <color name="ripple_material_dark">#33ffffff</color>
+    <color name="ripple_material_light">#1f000000</color>
     <color name="secondary_text_default_material_dark">#b3ffffff</color>
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
@@ -313,7 +313,7 @@
     <!-- From: file:/E:/AndroidWorkspace/FnF/ParseStarterProject/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Settings</string>
-    <string name="app_name">Parse Starter Project</string>
+    <string name="app_name">FairIt</string>
     <!-- From: file:/E:/AndroidWorkspace/FnF/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/values/values.xml -->
     <eat-comment/>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
@@ -323,6 +323,7 @@
     <string name="hello_world">Hello World!</string>
     <string name="parse_app_id">YOUR_APPLICATION_ID</string>
     <string name="parse_client_key">YOUR_CLIENT_KEY</string>
+    <string name="slogen">The Most Fair Job For Me</string>
     <!-- From: file:/E:/AndroidWorkspace/FnF/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/res/values/values.xml -->
     <eat-comment/>
     <string name="status_bar_notification_info_overflow">999+</string>

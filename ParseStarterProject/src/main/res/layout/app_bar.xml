@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@color/primaryColor"
+    app:theme="@style/ToolBarTheme"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    app:subtitle="@string/slogen"
+    app:logo="@mipmap/ferretlogo"
+    app:title="FairIt"
+    app:titleMargins="6dp"
+
+    >
+
+
+</android.support.v7.widget.Toolbar>

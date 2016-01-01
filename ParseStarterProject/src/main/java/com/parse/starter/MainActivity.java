@@ -12,7 +12,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -22,14 +24,16 @@ import com.parse.ParseObject;
 
 public class MainActivity extends AppCompatActivity {
 
+  private Toolbar toolBar;
   private RecyclerView recyclerView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
     ParseAnalytics.trackAppOpenedInBackground(getIntent());
+    setToolBar();
+    setRecyclerView();
 
     //ParseObject testObject = new ParseObject("TestObject");
     //testObject.put("foo", "bar");
@@ -37,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
 
     //Intent intent = new Intent(this, LaunchNotificationBroadcast.class);
     //sendBroadcast(intent);
+
+  }
+
+  private void setRecyclerView() {
+
+    recyclerView = (RecyclerView) findViewById(R.id.places_recycler);
+    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    recyclerView.setAdapter(new PlaceAdapter(this));
 
   }
 
@@ -60,5 +72,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     return super.onOptionsItemSelected(item);
+  }
+
+  /*
+  Sets up the top toolbar
+   */
+  private void setToolBar(){
+    toolBar = (Toolbar) findViewById(R.id.appBar);
+    setSupportActionBar(toolBar);
   }
 }

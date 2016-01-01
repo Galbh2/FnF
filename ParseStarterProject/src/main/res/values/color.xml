@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="romaine_lettuce">#3B5323</color>
-    <color name="pea">#78AB46</color>
-    <color name="primaryColor">#7cb342</color>
-    <color name="primaryColorDark">#689f38</color>
-    <color name="accentColor">#F1FFFA</color>
+    <color name="primaryColor">#639FAB</color>
+    <color name="primaryColorDark">#639FAB</color>
+    <color name="accentColor">#E9EDDE</color>
+    <color name="place_layout_color">#E9EDDE</color>
+    <color name="recycler_view_background">#474747</color>
 
 
 </resources>
