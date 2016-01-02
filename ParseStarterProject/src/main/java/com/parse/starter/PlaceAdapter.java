@@ -26,14 +26,12 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
     public PlaceAdapter(Context context){
         this.context = context;
         this.inflater = LayoutInflater.from(context);
-        this.placesList = new ArrayList<Place>(generateDate());
     }
 
-    public PlaceAdapter (Context context, List<Place> list){
+    public PlaceAdapter (Context context, ArrayList<Place> list){
 
         this(context);
-        placesList = new ArrayList<Place>(list);
-
+        placesList = list;
     }
 
 
@@ -46,6 +44,7 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
 
         View view = inflater.inflate(R.layout.single_place_layout, parent, false);
         MyViewHolder holder = new MyViewHolder(view);
+
         return holder;
     }
     /*
@@ -57,13 +56,22 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
         Place place = placesList.get(position);
         holder.nameTextView.setText(place.getName());
         holder.addressTextView.setText(place.getAddress());
-        holder.gradeTextView.setText(String.format("%.1f", place.getGrade()));
+
+        if (place.getGrade() == 10) {
+            holder.gradeTextView.setText(String.format("%.0f", place.getGrade()));
+        } else {
+            holder.gradeTextView.setText(String.format("%.1f", place.getGrade()));
+        }
+
+
+        if (!place.isOpenJobs()) {
+            holder.openJobsImageView.setVisibility(View.INVISIBLE);
+        }
 
         // This section parse the name of the logo and gets it from the "mipmap" folder..
         // in the future we will need to change it because the logos will be in the server of Parse.
-        String picName = Integer.toString(place.getId());
-        picName = "p".concat(picName);
-        int imgId = context.getResources().getIdentifier(picName, "mipmap", context.getPackageName());
+
+        int imgId = context.getResources().getIdentifier("p".concat(place.getId().toLowerCase()), "mipmap", context.getPackageName());
         holder.logoImageView.setImageResource(imgId);
 
     }
@@ -79,6 +87,7 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
         TextView addressTextView;
         ImageView logoImageView;
         TextView gradeTextView;
+        ImageView openJobsImageView;
 
         public MyViewHolder(View itemView){
             super(itemView);
@@ -87,6 +96,7 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
             addressTextView = (TextView) itemView.findViewById(R.id.address_text_view);
             logoImageView = (ImageView) itemView.findViewById(R.id.logo_image_view);
             gradeTextView = (TextView) itemView.findViewById(R.id.grade_text_view);
+            openJobsImageView = (ImageView) itemView.findViewById(R.id.open_job_image_view);
         }
 
     }
@@ -99,17 +109,15 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
 
         List<Place> list = new LinkedList<Place>();
 
-        list.add(new Place(1,"Macdonalds", "Cinema Ciy, Rishon Lzion", 8.4));
-        list.add(new Place(2, "Cofix", "Ben Gurion 12, Tel Aviv", 8.8));
-        list.add(new Place(3, "Vaniglia", "Sokolov 34, Ramat Hasharon", 9.4));
-        list.add(new Place(5, "Burger Ranch", "Ramat Aviv Shopping Center", 8.4));
-        list.add(new Place(4, "Cafe Cafe", "Ben Gurion 2, Herzliya", 8.4));
-        list.add(new Place(6, "Dominos Pizza", "Ben Gurion 34, Herzliya", 7.0));
-        list.add(new Place(7, "Agvania Pizza", "Sokolov 35, Herzliya", 10));
-        list.add(new Place(8, "Aroma", "Hmlachim 2, Rannim Center", 6.7));
-        list.add(new Place(9, "Aldo", "Levi Ashcol 1, Holon", 9.7));
-
-
+        list.add(new Place("1","Macdonalds", "Cinema Ciy, Rishon Lzion", 8.4));
+        list.add(new Place("2", "Cofix", "Ben Gurion 12, Tel Aviv", 8.8));
+        list.add(new Place("3", "Vaniglia", "Sokolov 34, Ramat Hasharon", 9.4));
+        list.add(new Place("5", "Burger Ranch", "Ramat Aviv Shopping Center", 8.4));
+        list.add(new Place("4", "Cafe Cafe", "Ben Gurion 2, Herzliya", 8.4));
+        list.add(new Place("6", "Dominos Pizza", "Ben Gurion 34, Herzliya", 7.0));
+        list.add(new Place("7", "Agvania Pizza", "Sokolov 35, Herzliya", 10));
+        list.add(new Place("8", "Aroma", "Hmlachim 2, Rannim Center", 6.7));
+        list.add(new Place("9", "Aldo", "Levi Ashcol 1, Holon", 9.7));
 
 
         PlaceComparator c =  new PlaceComparator();

@@ -3,7 +3,7 @@ package com.parse.starter;
 import java.util.Comparator;
 
 /**
- * Created by Gal on 01/01/2016.
+ * This class provides the "Comparator" objects for sorting the list of places
  */
 public class PlaceComparator implements Comparator<Place>{
 

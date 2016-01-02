@@ -7,9 +7,46 @@
     <ImageView
         android:layout_width="290dp"
         android:layout_height="429dp"
-        android:id="@+id/imageView"
-        android:src="@mipmap/ferret3"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/ferret"
+        android:src="@mipmap/ferret2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="33dp"
+      />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:background="@drawable/circle"
+        android:id="@+id/circle_b"
+        android:layout_alignBottom="@+id/ferret"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible"/>
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:background="@drawable/circle"
+        android:id="@+id/circle_a"
+        android:visibility="visible"
+        android:layout_alignBottom="@+id/ferret"
+        android:layout_toLeftOf="@+id/circle_b"
+        android:layout_toStartOf="@+id/circle_b"
+        android:layout_marginRight="17dp"
+        android:layout_marginEnd="17dp" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:background="@drawable/circle"
+        android:id="@+id/circle_c"
+        android:visibility="visible"
+        android:layout_alignBottom="@+id/ferret"
+        android:layout_toRightOf="@+id/circle_b"
+        android:layout_toEndOf="@+id/circle_b"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp" />
+
 
 </RelativeLayout>

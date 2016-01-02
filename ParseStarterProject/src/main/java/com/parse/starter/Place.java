@@ -5,10 +5,9 @@ package com.parse.starter;
  */
 public class Place {
 
-    private int id;
+    private String id;
     private String name;
     private String address;
-    private String logo;
     private double grade;
     private boolean openJobs;
 
@@ -19,7 +18,7 @@ public class Place {
      * @param address the address of the place (in the future gps support;
      * @param grade the final grade calculated by the server
      */
-    public Place (int id, String name, String address, double grade) {
+    public Place (String id, String name, String address, double grade) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -27,16 +26,16 @@ public class Place {
         openJobs = false;
     }
 
-    public Place (int id, String name, String address, double grade, boolean openJobs) {
+    public Place (String id, String name, String address, double grade, boolean openJobs) {
         this(id, name, address, grade);
         this.openJobs = openJobs;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -63,5 +62,13 @@ public class Place {
 
     public void setGrade(double grade) {
         this.grade = grade;
+    }
+
+    public boolean isOpenJobs() {
+        return openJobs;
+    }
+
+    public void setOpenJobs(boolean openJobs) {
+        this.openJobs = openJobs;
     }
 }
