@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/recycler_view_background">
+
+
+    <include
+        android:id="@+id/appBar"
+        layout="@layout/app_bar_no_logo" />
+
+    <include
+        android:id="@+id/profile_header"
+        layout="@layout/profile_header_layout" />
+
+
+
+    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_recycler"
+        android:background="@color/recycler_view_background"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/logo_image_view">
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

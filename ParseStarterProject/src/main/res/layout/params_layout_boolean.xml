@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginBottom="0.5dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:background="@color/place_layout_color">
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@mipmap/info"
+        android:id="@+id/info_image_view"
+        android:layout_alignParentLeft="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/body_text_view"
+        android:textSize="16dp"
+        android:text="You deserve to get the following rights!!!!!!"
+        android:layout_toRightOf="@id/info_image_view"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="6dp"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@mipmap/v"
+        android:id="@+id/sign_image_view"
+        android:layout_alignParentRight="true"/>
+
+
+
+
+</RelativeLayout>

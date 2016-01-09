@@ -13,10 +13,10 @@
         android:textStyle="bold"
         android:textSize="18dp"
         android:layout_alignTop="@+id/logo_image_view"
-        android:layout_toLeftOf="@+id/logo_image_view"
-        android:layout_toStartOf="@+id/logo_image_view"
-        android:layout_marginRight="15dp"
-        android:layout_marginEnd="15dp" />
+        android:layout_toRightOf="@+id/logo_image_view"
+        android:layout_toEndOf="@+id/logo_image_view"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,24 +24,26 @@
         android:text="Cinema City, Rishon Lzion"
         android:id="@+id/address_text_view"
         android:layout_alignBottom="@+id/logo_image_view"
-        android:layout_alignRight="@+id/name_text_view"
-        android:layout_alignEnd="@+id/name_text_view" />
+        android:layout_alignLeft="@+id/name_text_view"
+        android:layout_alignStart="@+id/name_text_view" />
 
     <ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:src="@mipmap/p1rvuwep28h"
         android:id="@+id/logo_image_view"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:src="@mipmap/wings"
         android:id="@+id/wings_image_view"
-        android:layout_alignBottom="@+id/address_text_view" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,14 +59,13 @@
         android:layout_marginTop="20dp"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:id="@+id/open_job_image_view"
         android:src="@mipmap/person"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp"
-        android:layout_alignBottom="@+id/wings_image_view"
-        android:layout_toRightOf="@+id/wings_image_view"
-        android:layout_toEndOf="@+id/wings_image_view" />
+
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/address_text_view"
+        android:layout_toEndOf="@+id/address_text_view" />
 
 </RelativeLayout>

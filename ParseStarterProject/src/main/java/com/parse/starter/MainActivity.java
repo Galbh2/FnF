@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -30,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements PlaceAdapter.PlaceClickListener {
 
     final static int LIMIT = 50;
     private Toolbar toolBar;
@@ -44,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
         setToolBar();
         setRecyclerView();
-
         testData();
 
         //ParseObject testObject = new ParseObject("TestObject");
@@ -144,5 +144,23 @@ public class MainActivity extends AppCompatActivity {
     private void setToolBar() {
         toolBar = (Toolbar) findViewById(R.id.appBar);
         setSupportActionBar(toolBar);
+    }
+
+    @Override
+    public void itemClicked(View view, int position) {
+
+        Place p = placesList.get(position);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("ID", p.getId());
+        bundle.putString("NAME", p.getName());
+        bundle.putDouble("GRADE", p.getGrade());
+        bundle.putBoolean("JOB", p.isOpenJobs());
+
+
+        Intent intent = new Intent(this, ProfileActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+
     }
 }

@@ -72,8 +72,9 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
         // in the future we will need to change it because the logos will be in the server of Parse.
 
         int imgId = context.getResources().getIdentifier("p".concat(place.getId().toLowerCase()), "mipmap", context.getPackageName());
-        holder.logoImageView.setImageResource(imgId);
-
+        if (imgId != 0) {
+            holder.logoImageView.setImageResource(imgId);
+        }
     }
 
     @Override
@@ -81,7 +82,7 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
         return placesList.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView nameTextView;
         TextView addressTextView;
@@ -97,9 +98,22 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
             logoImageView = (ImageView) itemView.findViewById(R.id.logo_image_view);
             gradeTextView = (TextView) itemView.findViewById(R.id.grade_text_view);
             openJobsImageView = (ImageView) itemView.findViewById(R.id.open_job_image_view);
+
+            itemView.setOnClickListener(this);
         }
 
+        @Override
+        public void onClick(View v) {
+            PlaceClickListener p = (PlaceClickListener) context;
+            p.itemClicked(v, getAdapterPosition());
+        }
     }
+
+    public interface PlaceClickListener {
+        public void itemClicked (View view, int position);
+    }
+
+
 
     /**
      *

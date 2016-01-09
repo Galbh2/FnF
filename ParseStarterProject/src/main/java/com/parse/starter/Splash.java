@@ -27,6 +27,8 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_layout);
 
+        Log.d("callbackg", "onCreate");
+
         circles[0] = (ImageView) findViewById(R.id.circle_a);
         circles[1] = (ImageView) findViewById(R.id.circle_b);
         circles[2] = (ImageView) findViewById(R.id.circle_c);
@@ -36,11 +38,41 @@ public class Splash extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("callbackg", "onResume");
+        //finish();
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("callbackg", "onDestroy");
+        //finish();
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
+        Log.d("callbackg", "onPause");
         finish();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("callbackg", "onStop");
+        //finish();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("callbackg", "onRestart");
+        Intent intent = new Intent(Splash.this, MainActivity.class);
+        startActivity(intent);
+    }
     public class AnimationTask extends AsyncTask<Void,Integer,Void> {
 
         @Override
@@ -119,6 +151,11 @@ public class Splash extends AppCompatActivity {
     }
 
     private void bindDataFromCloud (List<ParseObject> dataFromCloud) {
+
+        if (!MainActivity.placesList.isEmpty()) {
+            MainActivity.placesList.clear();
+        }
+
         for (ParseObject o : dataFromCloud) {
             MainActivity.placesList.add(new Place(o.getObjectId(), o.getString("name"), o.getString("address"),
                     o.getNumber("grade").floatValue(),
