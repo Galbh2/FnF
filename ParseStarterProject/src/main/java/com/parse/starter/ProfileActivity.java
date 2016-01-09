@@ -25,7 +25,7 @@ public class ProfileActivity extends AppCompatActivity {
     public ArrayList<Param> paramList = new ArrayList<Param>();
 
     private ImageView logoImageView, openJobImageView;
-    private TextView placeNameTextView, gradeTextView, openingHouersInfoTextView,
+    private TextView placeNameTextView, gradeTextView, addressTextView,
                     phoneTextView;
 
 
@@ -51,9 +51,10 @@ public class ProfileActivity extends AppCompatActivity {
             logoImageView = (ImageView) findViewById(R.id.logo_image_view);
             placeNameTextView = (TextView) findViewById(R.id.place_name_text_view);
             gradeTextView = (TextView) findViewById(R.id.grade_text_view);
-            openingHouersInfoTextView= (TextView) findViewById(R.id.opening_hours_info);
+            addressTextView= (TextView) findViewById(R.id.address_text_view);
             phoneTextView = (TextView) findViewById(R.id.phone_text_view);
             openJobImageView = (ImageView) findViewById(R.id.open_job_image_view);
+
 
             //Sets the logo
             int imgId = getResources().getIdentifier("p".concat(extras.getString("ID").toLowerCase()), "mipmap", getPackageName());
@@ -75,6 +76,9 @@ public class ProfileActivity extends AppCompatActivity {
             if (!extras.getBoolean("JOB")) {
                 openJobImageView.setVisibility(View.INVISIBLE);
             }
+
+            //Sets the address
+            addressTextView.setText(extras.getString("ADDRESS"));
 
         } else{
             Log.d("Profile Activity", "Extras = null");

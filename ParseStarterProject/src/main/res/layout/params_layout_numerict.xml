@@ -5,8 +5,8 @@
     android:layout_marginBottom="0.5dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    android:paddingTop="16dp"
-    android:paddingBottom="16dp"
+    android:paddingTop="19dp"
+    android:paddingBottom="19dp"
     android:background="@color/place_layout_color">
 
     <ImageView

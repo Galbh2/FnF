@@ -156,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
         bundle.putString("NAME", p.getName());
         bundle.putDouble("GRADE", p.getGrade());
         bundle.putBoolean("JOB", p.isOpenJobs());
+        bundle.putString("ADDRESS", p.getAddress());
 
 
         Intent intent = new Intent(this, ProfileActivity.class);

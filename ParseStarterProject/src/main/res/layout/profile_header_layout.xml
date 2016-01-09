@@ -45,40 +45,26 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"/>
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/opening_houers"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        android:id="@+id/opening_hours_header"
+        android:text="Adress:--------------------------------------"
+        android:textSize="14dp"
+        android:id="@+id/address_text_view"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:lineSpacingMultiplier="1.2"
         android:layout_alignLeft="@+id/logo_image_view"
         android:layout_alignStart="@+id/logo_image_view"
-        android:layout_below="@+id/logo_image_view"
-        android:layout_marginTop="12dp"
-        />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sun to Thu: 8:00am - 11:00pm\nFri: 8:00am - 4:00pm\nSat: 10:00am - 20:00pm"
-        android:textSize="14dp"
-        android:id="@+id/opening_hours_info"
-        android:layout_alignLeft="@+id/opening_hours_header"
-        android:layout_alignStart="@+id/opening_hours_header"
-        android:layout_below="@+id/opening_hours_header"
-        android:layout_marginTop="8dp"
-        android:lineSpacingMultiplier="1.2"/>
+        android:layout_below="@+id/logo_image_view" />
 
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:src="@mipmap/call"
         android:id="@+id/call_logo"
-        android:layout_alignBottom="@+id/opening_hours_info"
-        android:layout_alignRight="@+id/opening_hours_info"
-        android:layout_alignEnd="@+id/opening_hours_info" />
+        android:layout_below="@+id/address_text_view" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -93,14 +79,15 @@
         android:layout_marginLeft="2dp"/>
 
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:id="@+id/open_job_image_view"
         android:src="@mipmap/person"
-        android:layout_alignTop="@+id/call_logo"
-        android:layout_toEndOf="@+id/phone_text_view"
-        android:layout_toRightOf="@+id/phone_text_view"
+        android:layout_alignBottom="@+id/phone_text_view"
+        android:layout_toEndOf="@+id/place_name_text_view"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/wings_image_view"
+        android:layout_alignStart="@+id/wings_image_view" />
 
 </RelativeLayout>
