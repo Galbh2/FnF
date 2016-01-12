@@ -2216,7 +2216,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f0c0057;
         public static final int action_mode_bar_stub=0x7f0c0056;
         public static final int action_mode_close_button=0x7f0c003c;
-        public static final int action_settings=0x7f0c0092;
+        public static final int action_settings=0x7f0c0093;
         public static final int activity_chooser_view_content=0x7f0c003d;
         public static final int address_text_view=0x7f0c0087;
         public static final int alertTitle=0x7f0c0049;
@@ -2233,9 +2233,9 @@ containing a value of this type.
         public static final int center_vertical=0x7f0c001f;
         public static final int checkbox=0x7f0c0052;
         public static final int chronometer=0x7f0c0079;
-        public static final int circle_a=0x7f0c0090;
-        public static final int circle_b=0x7f0c008f;
-        public static final int circle_c=0x7f0c0091;
+        public static final int circle_a=0x7f0c0091;
+        public static final int circle_b=0x7f0c0090;
+        public static final int circle_c=0x7f0c0092;
         public static final int clip_horizontal=0x7f0c002b;
         public static final int clip_vertical=0x7f0c002c;
         public static final int collapseActionView=0x7f0c0033;
@@ -2257,7 +2257,7 @@ containing a value of this type.
         public static final int exitUntilCollapsed=0x7f0c0017;
         public static final int expand_activities_button=0x7f0c003e;
         public static final int expanded_menu=0x7f0c0051;
-        public static final int ferret=0x7f0c008e;
+        public static final int ferret=0x7f0c008f;
         public static final int fill=0x7f0c002d;
         public static final int fill_horizontal=0x7f0c002e;
         public static final int fill_vertical=0x7f0c0021;
@@ -2281,7 +2281,7 @@ containing a value of this type.
         public static final int middle=0x7f0c0031;
         public static final int mini=0x7f0c002f;
         public static final int multiply=0x7f0c0026;
-        public static final int name_text_view=0x7f0c008d;
+        public static final int name_text_view=0x7f0c008e;
         public static final int navigation_header_container=0x7f0c006d;
         public static final int never=0x7f0c0035;
         public static final int none=0x7f0c0010;
@@ -2293,8 +2293,8 @@ containing a value of this type.
         public static final int pin=0x7f0c001b;
         public static final int place_name_text_view=0x7f0c0084;
         public static final int places_recycler=0x7f0c006a;
-        public static final int profile_header=0x7f0c008b;
-        public static final int profile_recycler=0x7f0c008c;
+        public static final int profile_header=0x7f0c008c;
+        public static final int profile_recycler=0x7f0c008d;
         public static final int progress_circular=0x7f0c0006;
         public static final int progress_horizontal=0x7f0c0007;
         public static final int radio=0x7f0c0054;
@@ -2345,6 +2345,7 @@ containing a value of this type.
         public static final int up=0x7f0c0009;
         public static final int useLogo=0x7f0c0014;
         public static final int view_offset_helper=0x7f0c000a;
+        public static final int website_image_view=0x7f0c008b;
         public static final int wings_image_view=0x7f0c0085;
         public static final int withText=0x7f0c0036;
         public static final int wrap_content=0x7f0c0039;
@@ -2428,21 +2429,23 @@ containing a value of this type.
         public static final int ic_launcher=0x7f030005;
         public static final int info=0x7f030006;
         public static final int info2=0x7f030007;
-        public static final int no=0x7f030008;
-        public static final int ok=0x7f030009;
-        public static final int p1rvuwep28h=0x7f03000a;
-        public static final int p8gnxe0xoyl=0x7f03000b;
-        public static final int pbot0eip9bf=0x7f03000c;
-        public static final int pcmygeiw8d0=0x7f03000d;
-        public static final int pehgpzslgj5=0x7f03000e;
-        public static final int person=0x7f03000f;
-        public static final int pg6orcu245l=0x7f030010;
-        public static final int pl3izfajyqr=0x7f030011;
-        public static final int pov1j4g3vb3=0x7f030012;
-        public static final int pxcrqstk9hs=0x7f030013;
-        public static final int v=0x7f030014;
-        public static final int wings=0x7f030015;
-        public static final int x=0x7f030016;
+        public static final int logo=0x7f030008;
+        public static final int no=0x7f030009;
+        public static final int ok=0x7f03000a;
+        public static final int p1rvuwep28h=0x7f03000b;
+        public static final int p8gnxe0xoyl=0x7f03000c;
+        public static final int pbot0eip9bf=0x7f03000d;
+        public static final int pcmygeiw8d0=0x7f03000e;
+        public static final int pehgpzslgj5=0x7f03000f;
+        public static final int person=0x7f030010;
+        public static final int pg6orcu245l=0x7f030011;
+        public static final int pl3izfajyqr=0x7f030012;
+        public static final int pov1j4g3vb3=0x7f030013;
+        public static final int pxcrqstk9hs=0x7f030014;
+        public static final int v=0x7f030015;
+        public static final int website=0x7f030016;
+        public static final int wings=0x7f030017;
+        public static final int x=0x7f030018;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f060000;
@@ -2470,9 +2473,15 @@ containing a value of this type.
         public static final int character_counter_pattern=0x7f060017;
         public static final int hello_world=0x7f060018;
         public static final int opening_houers=0x7f060019;
-        public static final int parse_app_id=0x7f06001a;
-        public static final int parse_client_key=0x7f06001b;
-        public static final int slogen=0x7f06001c;
+        public static final int param_1=0x7f06001a;
+        public static final int param_2=0x7f06001b;
+        public static final int param_3=0x7f06001c;
+        public static final int param_4=0x7f06001d;
+        public static final int param_5=0x7f06001e;
+        public static final int param_6=0x7f06001f;
+        public static final int parse_app_id=0x7f060020;
+        public static final int parse_client_key=0x7f060021;
+        public static final int slogen=0x7f060022;
         public static final int status_bar_notification_info_overflow=0x7f060013;
     }
     public static final class style {

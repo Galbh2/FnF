@@ -1,14 +1,20 @@
 package com.parse.starter;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +24,7 @@ import java.util.ArrayList;
 /**
  * This class represents a profile page for a given Place.
  */
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements ProfileAdapter.InfoClickListener {
 
     private Toolbar toolBar;
     RecyclerView recyclerView;
@@ -37,9 +43,41 @@ public class ProfileActivity extends AppCompatActivity {
         setToolBar();
         setViews();
         setRecyclerView();
-        testData();
+       // testData();
 
 
+    }
+
+    public void showInfoDialog (int index, int[] position) {
+
+        Dialog d = new Dialog(this);
+        d.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        WindowManager.LayoutParams wmlp = d.getWindow().getAttributes();
+
+        d.setContentView(R.layout.single_place_layout);
+
+        wmlp.gravity = Gravity.TOP | Gravity.LEFT;
+        wmlp.x = position[0];
+        wmlp.y = position[1];
+
+        Log.d("x", String.valueOf(position[0]));
+        Log.d("y", String.valueOf(position[1]));
+        d.show();
+
+    }
+
+    public void showInfoDialog (int index) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(Utils.getParamInfo(index, this))
+                .setNeutralButton("Got it!", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+        builder.create().show();
     }
 
     private void setViews(){

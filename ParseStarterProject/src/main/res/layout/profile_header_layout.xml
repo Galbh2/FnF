@@ -79,15 +79,24 @@
         android:layout_marginLeft="2dp"/>
 
     <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:id="@+id/open_job_image_view"
         android:src="@mipmap/person"
-        android:layout_alignBottom="@+id/phone_text_view"
-        android:layout_toEndOf="@+id/place_name_text_view"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@+id/wings_image_view"
-        android:layout_alignStart="@+id/wings_image_view" />
+        android:layout_alignTop="@+id/website_image_view"
+        android:layout_toRightOf="@+id/place_name_text_view"
+        android:layout_toEndOf="@+id/place_name_text_view" />
+
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:id="@+id/website_image_view"
+        android:src="@mipmap/website"
+        android:layout_below="@+id/address_text_view"
+        android:layout_toRightOf="@+id/phone_text_view"
+        android:layout_alignTop="@+id/call_logo"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="6dp"
+        />
 
 </RelativeLayout>

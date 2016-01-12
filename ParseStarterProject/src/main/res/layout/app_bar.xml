@@ -7,9 +7,9 @@
     app:theme="@style/ToolBarTheme"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     app:subtitle="@string/slogen"
-    app:logo="@mipmap/ferretlogo"
     app:title="FairIt"
-    app:titleMargins="6dp"
+    android:titleTextColor="@color/recycler_view_background"
+
 
     >
 

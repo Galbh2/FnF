@@ -8,12 +8,11 @@
         android:layout_width="290dp"
         android:layout_height="429dp"
         android:id="@+id/ferret"
-        android:src="@mipmap/ferret2"
+        android:src="@mipmap/logo"
+
+        android:layout_marginTop="34dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="33dp"
-      />
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:layout_width="15dp"

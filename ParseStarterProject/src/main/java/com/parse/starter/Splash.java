@@ -21,6 +21,7 @@ import java.util.List;
 public class Splash extends AppCompatActivity {
 
     ImageView[] circles = new ImageView[3];
+    AsyncTask animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,8 @@ public class Splash extends AppCompatActivity {
         circles[1] = (ImageView) findViewById(R.id.circle_b);
         circles[2] = (ImageView) findViewById(R.id.circle_c);
 
-        getPlacesFromCloud(new AnimationTask().execute());
+        animation = new AnimationTask().execute();
+        getPlacesFromCloud();
 
     }
 
@@ -56,6 +58,9 @@ public class Splash extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         Log.d("callbackg", "onPause");
+        if (animation != null && animation.getStatus() == AsyncTask.Status.RUNNING) {
+            animation.cancel(true);
+        }
         finish();
     }
 
@@ -107,10 +112,9 @@ public class Splash extends AppCompatActivity {
 
     /**
      * This method isn't in use
-     * @param delay
-     * @param animation
+
      */
-    private void launchMain (final int delay, final AsyncTask animation) {
+    private void launchMain (final int delay) {
 
         new Thread() {
             @Override
@@ -128,11 +132,12 @@ public class Splash extends AppCompatActivity {
         }.start();
     }
 
-    private void getPlacesFromCloud(final AsyncTask animation) {
+    private void getPlacesFromCloud() {
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Place");
         query.setLimit(MainActivity.LIMIT);
         query.orderByDescending("grade");
+
 
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -142,7 +147,6 @@ public class Splash extends AppCompatActivity {
                 } else {
                     Log.d("Fetch err", e.getMessage());
                 }
-                animation.cancel(true);
                 Intent intent = new Intent(Splash.this, MainActivity.class);
                 startActivity(intent);
             }
