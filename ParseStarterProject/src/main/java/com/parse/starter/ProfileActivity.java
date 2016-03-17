@@ -2,6 +2,7 @@ package com.parse.starter;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 /**
  * This class represents a profile page for a given Place.
  */
-public class ProfileActivity extends AppCompatActivity implements ProfileAdapter.InfoClickListener {
+public class ProfileActivity extends AppCompatActivity implements ProfileAdapter.InfoClickListener, View.OnClickListener {
 
     private Toolbar toolBar;
     RecyclerView recyclerView;
@@ -44,9 +45,11 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
         setViews();
         setRecyclerView();
        // testData();
-
-
     }
+
+    /**
+     *shows the info dialog in the area that was clicked
+     */
 
     public void showInfoDialog (int index, int[] position) {
 
@@ -66,6 +69,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
 
     }
 
+    /**
+     * shows the info dialog in the middle of the screen
+     * @param index
+     */
     public void showInfoDialog (int index) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -93,6 +100,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
             phoneTextView = (TextView) findViewById(R.id.phone_text_view);
             openJobImageView = (ImageView) findViewById(R.id.open_job_image_view);
 
+            //Sets listeners
+
+            openJobImageView.setOnClickListener(this);
 
             //Sets the logo
             int imgId = getResources().getIdentifier("p".concat(extras.getString("ID").toLowerCase()), "mipmap", getPackageName());
@@ -111,9 +121,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
             }
 
             //Sets the job icon
-            if (!extras.getBoolean("JOB")) {
-                openJobImageView.setVisibility(View.INVISIBLE);
-            }
+            //    if (!extras.getBoolean("JOB")) {
+            //      openJobImageView.setVisibility(View.INVISIBLE);
+            //}
 
             //Sets the address
             addressTextView.setText(extras.getString("ADDRESS"));
@@ -169,6 +179,18 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        if (v == openJobImageView) {
+
+            Bundle bundle = getIntent().getExtras();
+            Intent intent = new Intent(this, FeedbackActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
     }
 }
 

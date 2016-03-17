@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="6"
+    android:background="@color/place_layout_color"
+    android:padding="10dp">
+
+
+
+
+    <android.widget.Space
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/ring_circle_toggle"
+        android:id="@+id/circle_a"
+        android:enabled="false"
+     />
+
+    <android.widget.Space
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/ring_circle_toggle"
+        android:id="@+id/circle_b"
+        android:enabled="false"
+        />
+
+
+    <android.widget.Space
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/ring_circle_toggle"
+        android:id="@+id/circle_c"
+        android:enabled="false"
+        />
+
+
+    <android.widget.Space
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/ring_circle_toggle"
+        android:id="@+id/circle_d"
+        android:enabled="false"
+        />
+
+
+    <android.widget.Space
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/ring_circle_toggle"
+        android:id="@+id/circle_f"
+        android:enabled="false"
+        />
+
+    <android.widget.Space
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+</LinearLayout>

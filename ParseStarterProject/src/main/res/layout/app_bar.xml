@@ -7,7 +7,7 @@
     app:theme="@style/ToolBarTheme"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     app:subtitle="@string/slogen"
-    app:title="FairIt"
+    app:title="Joba"
     android:titleTextColor="@color/recycler_view_background"
 
 

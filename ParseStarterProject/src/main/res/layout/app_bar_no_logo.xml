@@ -6,7 +6,7 @@
     android:background="@color/primaryColor"
     app:theme="@style/ToolBarTheme"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    app:title="FairIt"
+    app:title="Joba"
     >
 
 </android.support.v7.widget.Toolbar>

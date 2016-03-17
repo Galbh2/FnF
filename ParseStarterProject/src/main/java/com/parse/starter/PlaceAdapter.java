@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,6 +21,7 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
     private ArrayList<Place> placesList;
     private Context context;
     private LayoutInflater inflater;
+    private int lastPosition = -1;
 
     public PlaceAdapter(Context context){
         this.context = context;
@@ -70,6 +70,9 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
 
         // This section parse the name of the logo and gets it from the "mipmap" folder..
         // in the future we will need to change it because the logos will be in the server of Parse.
+
+        MyAnimations.animatePlace(holder, lastPosition, position, context);
+        lastPosition = position;
 
         int imgId = context.getResources().getIdentifier("p".concat(place.getId().toLowerCase()), "mipmap", context.getPackageName());
         if (imgId != 0) {

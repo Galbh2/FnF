@@ -15,6 +15,11 @@ public class Param {
      * @param body
      * @param numData
      */
+
+    public Param(){
+
+    }
+
     public Param (String body, double numData) {
 
         this.type = 1;
