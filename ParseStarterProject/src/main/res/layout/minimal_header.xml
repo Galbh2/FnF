@@ -45,7 +45,7 @@
             android:layout_height="35dp"
             android:background="@drawable/ring_circle_toggle"
             android:id="@+id/circle_a"
-            android:enabled="false"
+            android:enabled="true"
             />
 
         <android.widget.Space
