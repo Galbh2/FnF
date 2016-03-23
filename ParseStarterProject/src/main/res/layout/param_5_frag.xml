@@ -1,11 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="param5"
-        android:layout_gravity="center_horizontal" />
-</LinearLayout>
+        android:text="@string/param5_text"
+        android:autoText="false"
+        android:textSize="40dp"
+        android:textDirection="rtl"
+        android:gravity="right"
+        android:id="@+id/textView"
+        android:layout_marginTop="40dp"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:id="@+id/radioGroup"
+        android:layout_below="@+id/textView"
+        android:padding="30dp"
+        >
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/param_1_no"
+            android:text="@string/no"
+            android:textSize="30dp"
+            android:layout_margin="30dp"
+            />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/param_1_yes"
+            android:text="@string/yes"
+            android:textSize="30dp"
+            android:layout_margin="30dp"
+            />
+    </RadioGroup>
+
+
+</RelativeLayout>

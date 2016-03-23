@@ -96,10 +96,23 @@
             android:layout_weight="1"/>
 
         <Button
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/ring_circle_toggle"
+        android:id="@+id/circle_f"
+        android:enabled="false"
+        />
+
+        <android.widget.Space
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <Button
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:background="@drawable/ring_circle_toggle"
-            android:id="@+id/circle_f"
+            android:id="@+id/circle_g"
             android:enabled="false"
             />
 

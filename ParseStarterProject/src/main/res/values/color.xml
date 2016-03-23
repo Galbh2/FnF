@@ -3,7 +3,7 @@
 
     <color name="primaryColor">#639FAB</color>
     <color name="primaryColorDark">#639FAB</color>
-    <color name="accentColor">#E9EDDE</color>
+    <color name="accentColor">#474747</color>
     <color name="place_layout_color">#E9EDDE</color>
     <color name="recycler_view_background">#474747</color>
 

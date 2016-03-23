@@ -19,11 +19,13 @@ import java.security.KeyStore;
  */
 public class FeedbackActivity extends AppCompatActivity implements BaseFragment.ParentActions, View.OnClickListener {
 
+    public static final int NUM_OF_PARAMS = 6;
     private Toolbar toolBar;
     ViewPager viewPager;
-    final Param[] params = new Param[5];
+    final Param[] params = new Param[NUM_OF_PARAMS];
     private ImageView right, left;
-    private Button[] circles = new Button[5];
+    private Button[] circles = new Button[NUM_OF_PARAMS];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,7 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
         circles[2] = (Button) findViewById(R.id.circle_c);
         circles[3] = (Button) findViewById(R.id.circle_d);
         circles[4] = (Button) findViewById(R.id.circle_f);
+        circles[5] = (Button) findViewById(R.id.circle_g);
 
 
         right.setOnClickListener(this);
@@ -108,8 +111,6 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
 
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-
             }
 
             @Override
@@ -124,10 +125,8 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
                 lastPosition = position;
 
             }
-
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
     }
@@ -135,11 +134,14 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
     //Adapter for the view pager
     private static class PageAdapter extends FragmentPagerAdapter {
 
+
+
         private Fragment frag1 = new Param1Frag();
         private Fragment frag2 = new Param2Frag();
         private Fragment frag3 = new Param3Frag();
         private Fragment frag4 = new Param4Frag();
         private Fragment frag5 = new Param5Frag();
+        private Fragment frag6 = new Param6Frag();
 
 
         public PageAdapter(FragmentManager fm) {
@@ -161,6 +163,8 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
                     return frag4;
                 case 4:
                     return frag5;
+                case 5:
+                    return frag6;
             }
 
             return null;
@@ -168,7 +172,7 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
 
         @Override
         public int getCount() {
-            return 5;
+            return FeedbackActivity.NUM_OF_PARAMS;
         }
 
         @Override
@@ -185,6 +189,8 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
                     return "4";
                 case 4:
                     return "5";
+                case 5:
+                    return "6";
                 default:
                     return "n/a";
             }
