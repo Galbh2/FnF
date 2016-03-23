@@ -15,7 +15,8 @@ android:layout_height="match_parent">
     android:layout_marginTop="41dp"
     android:layout_alignParentTop="true"
     android:layout_alignParentRight="true"
-    android:layout_alignParentEnd="true" />
+    android:layout_alignParentEnd="true"
+    android:cursorVisible="false"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -24,7 +25,7 @@ android:layout_height="match_parent">
         android:inputType="numberDecimal"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:id="@+id/radioGroup"
+        android:id="@+id/param_edit_text"
         android:layout_below="@+id/textView"
         android:padding="30dp"
         android:hint="@string/param2_default"

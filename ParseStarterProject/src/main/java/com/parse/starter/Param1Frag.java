@@ -12,55 +12,17 @@ import android.widget.Toast;
 /**
  * Created by Gal on 18/03/2016.
  */
-public class Param1Frag extends BaseFragment {
+public class Param1Frag extends BaseYNFragment {
 
-    RadioGroup radio;
-    RadioButton yesButton;
-    RadioButton noButton;
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setFragIndex(0);
-        setParent();
-        getParam(fragIndex);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        View layout = inflater.inflate(R.layout.param_1_frag, container,false);
-        setRadioButtons(layout);
-
-
-
-        return layout;
+        super.onCreateView(inflater, container, savedInstanceState);
+        return inflater.inflate(R.layout.param_1_frag, container,false);
     }
 
-    private void setRadioButtons(View layout){
-
-        radio = (RadioGroup) layout.findViewById(R.id.radioGroup);
-        yesButton = (RadioButton) radio.findViewById(R.id.param_1_yes);
-        noButton = (RadioButton) radio.findViewById(R.id.param_1_no);
-
-        radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-                Log.d("onChecked", String.valueOf(checkedId));
-
-                switch (checkedId) {
-                    case R.id.param_1_yes:
-                        Toast.makeText(getActivity(), "yes", Toast.LENGTH_LONG).show();
-                        param.setBoolData(true);
-                        break;
-                    case R.id.param_1_no:
-                        Toast.makeText(getActivity(), "no", Toast.LENGTH_LONG).show();
-                        param.setBoolData(false);
-                        break;
-                }
-            }
-        });
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 }

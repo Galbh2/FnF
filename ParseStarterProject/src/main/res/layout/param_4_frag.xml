@@ -29,7 +29,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/param_1_no"
+            android:id="@+id/param_no"
             android:text="@string/no"
             android:textSize="30dp"
             android:layout_margin="30dp"
@@ -38,7 +38,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/param_1_yes"
+            android:id="@+id/param_yes"
             android:text="@string/yes"
             android:textSize="30dp"
             android:layout_margin="30dp"

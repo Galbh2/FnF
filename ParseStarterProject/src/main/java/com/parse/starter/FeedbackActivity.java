@@ -134,18 +134,44 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
     //Adapter for the view pager
     private static class PageAdapter extends FragmentPagerAdapter {
 
-
-
-        private Fragment frag1 = new Param1Frag();
-        private Fragment frag2 = new Param2Frag();
-        private Fragment frag3 = new Param3Frag();
-        private Fragment frag4 = new Param4Frag();
-        private Fragment frag5 = new Param5Frag();
-        private Fragment frag6 = new Param6Frag();
-
+        private Fragment frag1;
+        private Fragment frag2;
+        private Fragment frag3;
+        private Fragment frag4;
+        private Fragment frag5;
+        private Fragment frag6;
 
         public PageAdapter(FragmentManager fm) {
             super(fm);
+
+            frag1 = new Param1Frag();
+            frag2 = new Param2Frag();
+            frag3 = new Param3Frag();
+            frag4 = new Param4Frag();
+            frag5 = new Param5Frag();
+            frag6 = new Param6Frag();
+
+            Bundle b1 = new Bundle();
+            Bundle b2 = new Bundle();
+            Bundle b3 = new Bundle();
+            Bundle b4 = new Bundle();
+            Bundle b5 = new Bundle();
+            Bundle b6 = new Bundle();
+
+            b1.putInt("index", 0);
+            b2.putInt("index", 1);
+            b3.putInt("index", 2);
+            b4.putInt("index", 3);
+            b5.putInt("index", 4);
+            b6.putInt("index", 5);
+
+            frag1.setArguments(b1);
+            frag2.setArguments(b2);
+            frag3.setArguments(b3);
+            frag4.setArguments(b4);
+            frag5.setArguments(b5);
+            frag6.setArguments(b6);
+
 
         }
 
@@ -196,5 +222,12 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
             }
 
         }
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }
