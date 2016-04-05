@@ -14,10 +14,6 @@
 
     </style>
 
-    <style name="ToolBarTheme" parent="ThemeOverlay.AppCompat.Dark">
 
-        <item name="android:textColorPrimary">#464E47</item>
-
-    </style>
 
 </resources>

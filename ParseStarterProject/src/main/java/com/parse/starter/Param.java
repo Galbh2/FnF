@@ -1,7 +1,7 @@
 package com.parse.starter;
 
 /**
- *This class represents one parameter from the ProfileActivity page of a Place.
+ *This class represents one parameter from the ProfileActivity page of a MyPlace.
  */
 public class Param {
 

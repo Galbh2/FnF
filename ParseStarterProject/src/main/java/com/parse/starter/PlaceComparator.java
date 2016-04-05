@@ -5,7 +5,7 @@ import java.util.Comparator;
 /**
  * This class provides the "Comparator" objects for sorting the list of places
  */
-public class PlaceComparator implements Comparator<Place>{
+public class PlaceComparator implements Comparator<MyPlace>{
 
 
     public PlaceComparator sortByGrade() {
@@ -13,7 +13,7 @@ public class PlaceComparator implements Comparator<Place>{
        return new PlaceComparator() {
 
            @Override
-           public int compare(Place lhs, Place rhs) {
+           public int compare(MyPlace lhs, MyPlace rhs) {
                if (lhs.getGrade() < rhs.getGrade())
                    return 1;
                else
@@ -26,7 +26,7 @@ public class PlaceComparator implements Comparator<Place>{
 
         return new PlaceComparator() {
             @Override
-            public int compare(Place lhs, Place rhs) {
+            public int compare(MyPlace lhs, MyPlace rhs) {
                 return lhs.getName().compareTo(rhs.getName());
             }
         };
@@ -38,7 +38,7 @@ public class PlaceComparator implements Comparator<Place>{
 
 
     @Override
-    public int compare(Place lhs, Place rhs) {
+    public int compare(MyPlace lhs, MyPlace rhs) {
         return 0;
     }
 }

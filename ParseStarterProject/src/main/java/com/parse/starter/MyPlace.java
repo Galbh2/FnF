@@ -3,7 +3,7 @@ package com.parse.starter;
 /**
  * This class is the data object for holding one place.
  */
-public class Place {
+public class MyPlace {
 
     private String id;
     private String name;
@@ -18,7 +18,7 @@ public class Place {
      * @param address the address of the place (in the future gps support;
      * @param grade the final grade calculated by the server
      */
-    public Place (String id, String name, String address, double grade) {
+    public MyPlace(String id, String name, String address, double grade) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -26,7 +26,7 @@ public class Place {
         openJobs = false;
     }
 
-    public Place (String id, String name, String address, double grade, boolean openJobs) {
+    public MyPlace(String id, String name, String address, double grade, boolean openJobs) {
         this(id, name, address, grade);
         this.openJobs = openJobs;
     }

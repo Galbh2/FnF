@@ -2,6 +2,9 @@ package com.parse.starter;
 
 import android.content.Context;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.places.Places;
+
 /**
  * Created by Gal on 13/01/2016.
  */
@@ -26,4 +29,5 @@ public class Utils {
                 return "default string";
         }
     }
+
 }

@@ -13,8 +13,8 @@ public class MyAnimations {
 
     public static void animatePlace(RecyclerView.ViewHolder holder, int lastPosition, int currentPosition, Context context) {
         if (currentPosition > lastPosition) {
-            Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
-            animation.setStartOffset((currentPosition % 7) *100);
+            Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.fade_in);
+            animation.setStartOffset((currentPosition % 5) *100);
             holder.itemView.startAnimation(animation);
         }
     }

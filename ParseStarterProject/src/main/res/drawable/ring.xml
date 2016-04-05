@@ -7,7 +7,7 @@
         android:color="@color/place_layout_color"/>
 
     <stroke
-        android:color="@color/primaryColor"
+        android:color="@color/ring"
         android:width="2dp"/>
 
     <size

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:layout_marginBottom="0.5dp"
+    android:layout_marginBottom="4dp"
     android:padding="10dp"
     android:background="@color/place_layout_color">
 
@@ -11,21 +11,30 @@
         android:text="Macdonalds"
         android:id="@+id/name_text_view"
         android:textStyle="bold"
-        android:textSize="18dp"
+        android:textSize="20sp"
         android:layout_alignTop="@+id/logo_image_view"
         android:layout_toRightOf="@+id/logo_image_view"
         android:layout_toEndOf="@+id/logo_image_view"
         android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp" />
+        android:layout_marginStart="20dp"
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"
+        android:fontFamily="sans-serif-light"
+
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cinema City, Rishon Lzion"
         android:id="@+id/address_text_view"
-        android:layout_alignBottom="@+id/logo_image_view"
+        android:layout_below="@+id/name_text_view"
         android:layout_alignLeft="@+id/name_text_view"
-        android:layout_alignStart="@+id/name_text_view" />
+        android:layout_alignStart="@+id/name_text_view"
+        android:layout_marginTop="4dp"/>
+
 
     <ImageView
         android:layout_width="60dp"
@@ -37,8 +46,8 @@
         android:layout_alignParentStart="true" />
 
     <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@mipmap/wings"
         android:id="@+id/wings_image_view"
         android:layout_alignParentTop="true"
@@ -55,8 +64,8 @@
         android:layout_alignLeft="@id/wings_image_view"
         android:layout_alignRight="@+id/wings_image_view"
         android:layout_alignEnd="@+id/wings_image_view"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginLeft="15.5dp"
+        android:layout_marginTop="14dp"/>
 
     <ImageView
         android:layout_width="40dp"

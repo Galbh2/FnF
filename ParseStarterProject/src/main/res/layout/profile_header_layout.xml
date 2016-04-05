@@ -3,17 +3,18 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
-    android:layout_marginBottom="1dp"
-    android:background="@color/place_layout_color">
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    android:background="@color/place_layout_color"
+    android:elevation="2dp">
 
     <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@mipmap/p1rvuwep28h"
         android:id="@+id/logo_image_view"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignTop="@+id/grade_text_view"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,82 +22,67 @@
         android:text="Macdonalds"
         android:id="@+id/place_name_text_view"
         android:textStyle="bold"
-        android:textSize="30dp"
-        android:layout_marginTop="12dp"
-        android:layout_centerHorizontal="true" />
+        android:textSize="18sp"
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"
+        android:fontFamily="sans-serif-light"
+        android:layout_alignBottom="@+id/grade_text_view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@mipmap/wings"
         android:id="@+id/wings_image_view"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+
+       />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="9.9"
+        android:textSize="12sp"
         android:id="@+id/grade_text_view"
-        android:layout_alignTop="@id/wings_image_view"
-        android:layout_alignBottom="@id/wings_image_view"
+        android:layout_alignTop="@+id/wings_image_view"
         android:layout_alignLeft="@id/wings_image_view"
-        android:layout_alignRight="@+id/wings_image_view"
-        android:layout_alignEnd="@+id/wings_image_view"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="14dp"/>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Adress:--------------------------------------"
-        android:textSize="14dp"
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+
         android:id="@+id/address_text_view"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:lineSpacingMultiplier="1.2"
-        android:layout_alignLeft="@+id/logo_image_view"
-        android:layout_alignStart="@+id/logo_image_view"
-        android:layout_below="@+id/logo_image_view" />
+        android:src="@mipmap/ic_place_white_48dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/logo_image_view"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="50dp"/>
 
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:src="@mipmap/call"
+        android:layout_marginTop="5dp"
         android:id="@+id/call_logo"
-        android:layout_below="@+id/address_text_view" />
+        android:layout_below="@+id/logo_image_view"
+        android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="09-9592032"
-        android:textSize="16dp"
-        android:id="@+id/phone_text_view"
-        android:layout_toEndOf="@+id/call_logo"
-        android:layout_toRightOf="@+id/call_logo"
-        android:layout_alignBottom="@+id/call_logo"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="2dp"/>
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/open_job_image_view"
-        android:src="@mipmap/person"
-        android:layout_alignTop="@+id/website_image_view"
-        android:layout_toRightOf="@+id/place_name_text_view"
-        android:layout_toEndOf="@+id/place_name_text_view" />
-
-    <ImageView
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/website_image_view"
         android:src="@mipmap/website"
-        android:layout_below="@+id/address_text_view"
-        android:layout_toRightOf="@+id/phone_text_view"
-        android:layout_alignTop="@+id/call_logo"
-        android:layout_marginLeft="50dp"
-        android:layout_marginBottom="6dp"
-        />
+        android:layout_below="@+id/logo_image_view"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="50dp"/>
+
 
 </RelativeLayout>

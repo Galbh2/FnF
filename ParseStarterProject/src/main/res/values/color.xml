@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="primaryColor">#639FAB</color>
-    <color name="primaryColorDark">#639FAB</color>
-    <color name="accentColor">#474747</color>
-    <color name="place_layout_color">#E9EDDE</color>
+    <color name="primaryColor">#673ab7</color>
+    <color name="primaryColorDark">#512da8</color>
+    <color name="accentColor">#a7ffeb</color>
+    <color name="place_layout_color">#fafafa</color>
     <color name="recycler_view_background">#474747</color>
+    <color name="circle">#d1c4e9</color>
+    <color name="ring">#b39ddb</color>
 
 
 </resources>

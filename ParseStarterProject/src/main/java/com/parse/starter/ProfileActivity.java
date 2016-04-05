@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,7 +24,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 /**
- * This class represents a profile page for a given Place.
+ * This class represents a profile page for a given MyPlace.
  */
 public class ProfileActivity extends AppCompatActivity implements ProfileAdapter.InfoClickListener, View.OnClickListener {
 
@@ -31,9 +32,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
     RecyclerView recyclerView;
     public ArrayList<Param> paramList = new ArrayList<Param>();
 
-    private ImageView logoImageView, openJobImageView;
-    private TextView placeNameTextView, gradeTextView, addressTextView,
-                    phoneTextView;
+    private FloatingActionButton fab;
+    private ImageView logoImageView;
+    private TextView placeNameTextView, gradeTextView;
+
 
 
     @Override
@@ -96,13 +98,11 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
             logoImageView = (ImageView) findViewById(R.id.logo_image_view);
             placeNameTextView = (TextView) findViewById(R.id.place_name_text_view);
             gradeTextView = (TextView) findViewById(R.id.grade_text_view);
-            addressTextView= (TextView) findViewById(R.id.address_text_view);
-            phoneTextView = (TextView) findViewById(R.id.phone_text_view);
-            openJobImageView = (ImageView) findViewById(R.id.open_job_image_view);
+            fab = (FloatingActionButton) findViewById(R.id.fab);
 
             //Sets listeners
 
-            openJobImageView.setOnClickListener(this);
+            fab.setOnClickListener(this);
 
             //Sets the logo
             int imgId = getResources().getIdentifier("p".concat(extras.getString("ID").toLowerCase()), "mipmap", getPackageName());
@@ -125,8 +125,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
             //      openJobImageView.setVisibility(View.INVISIBLE);
             //}
 
-            //Sets the address
-            addressTextView.setText(extras.getString("ADDRESS"));
+
 
         } else{
             Log.d("Profile Activity", "Extras = null");
@@ -184,7 +183,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
     @Override
     public void onClick(View v) {
 
-        if (v == openJobImageView) {
+        if (v == fab) {
 
             Bundle bundle = getIntent().getExtras();
             Intent intent = new Intent(this, FeedbackActivity.class);

@@ -2,13 +2,20 @@
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="86dp"
+    android:paddingRight="15dp"
+    android:paddingLeft="15dp"
     android:background="@color/primaryColor"
     app:theme="@style/ToolBarTheme"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     app:subtitle="@string/slogen"
-    app:title="Joba"
-    android:titleTextColor="@color/recycler_view_background"
+    app:title="@string/app_name"
+    app:paddingStart="72dp"
+    android:elevation="12dp"
+    android:titleTextColor="@color/place_layout_color"
+    android:subtitleTextColor="@color/place_layout_color"
+    android:titleTextAppearance="@style/ToolBarTheme"
+
 
 
     >

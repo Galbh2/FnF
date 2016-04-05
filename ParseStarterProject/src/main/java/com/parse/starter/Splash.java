@@ -161,7 +161,7 @@ public class Splash extends AppCompatActivity {
         }
 
         for (ParseObject o : dataFromCloud) {
-            MainActivity.placesList.add(new Place(o.getObjectId(), o.getString("name"), o.getString("address"),
+            MainActivity.placesList.add(new MyPlace(o.getObjectId(), o.getString("name"), o.getString("address"),
                     o.getNumber("grade").floatValue(),
                     o.getBoolean("openJobs")));
         }

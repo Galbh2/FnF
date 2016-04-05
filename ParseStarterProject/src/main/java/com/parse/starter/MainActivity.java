@@ -10,7 +10,6 @@ package com.parse.starter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +20,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.Places;
+import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+import com.google.android.gms.location.places.ui.SupportPlaceAutocompleteFragment;
 import com.parse.FindCallback;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
@@ -31,12 +38,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements PlaceAdapter.PlaceClickListener {
+public class MainActivity extends AppCompatActivity implements PlaceAdapter.PlaceClickListener, GoogleApiClient.OnConnectionFailedListener{
 
     final static int LIMIT = 50;
     private Toolbar toolBar;
     private RecyclerView recyclerView;
-    public static ArrayList<Place> placesList = new ArrayList<Place>();
+    public static ArrayList<MyPlace> placesList = new ArrayList<MyPlace>();
+    protected GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
         setToolBar();
         setRecyclerView();
         testData();
+        buildGoogleApiClient();
+        setAutoCompleteFrag();
 
         //ParseObject testObject = new ParseObject("TestObject");
         //testObject.put("foo", "bar");
@@ -54,6 +64,28 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
         //Intent intent = new Intent(this, LaunchNotificationBroadcast.class);
         //sendBroadcast(intent);
 
+    }
+
+    private void setAutoCompleteFrag() {
+
+        SupportPlaceAutocompleteFragment autocompleteFragment = (SupportPlaceAutocompleteFragment)
+                getSupportFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+
+
+
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                // TODO: Get info about the selected place.
+                Log.i("msg", "Place: " + place.getName());
+            }
+
+            @Override
+            public void onError(Status status) {
+                // TODO: Handle the error.
+                Log.i("msg", "An error occurred: " + status);
+            }
+        });
     }
 
     private void testData() {
@@ -69,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
      */
     private void getPlacesFromCloud() {
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Place");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("MyPlace");
         query.setSkip(placesList.size() + LIMIT);
         query.setLimit(LIMIT);
         query.orderByDescending("grade");
@@ -82,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
                 if (e == null) {
                     bindDataFromCloud(objects);
                 } else {
-                    Log.d("Fetch err" ,e.getMessage());
+                    Log.d("Fetch err", e.getMessage());
                 }
             }
         });
@@ -97,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
     private void bindDataFromCloud (List<ParseObject> dataFromCloud) {
 
         for (ParseObject o : dataFromCloud) {
-            placesList.add(new Place(o.getObjectId(), o.getString("name"), o.getString("address"),
+            placesList.add(new MyPlace(o.getObjectId(), o.getString("name"), o.getString("address"),
                     o.getNumber("grade").floatValue(),
                     o.getBoolean("openJobs")));
         }
@@ -149,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
     @Override
     public void itemClicked(View view, int position) {
 
-        Place p = placesList.get(position);
+        MyPlace p = placesList.get(position);
 
         Bundle bundle = new Bundle();
         bundle.putString("ID", p.getId());
@@ -162,6 +194,23 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
         Intent intent = new Intent(this, ProfileActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
+
+    }
+
+
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
+    }
+
+    protected void buildGoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient
+                .Builder(this)
+                .addApi(Places.GEO_DATA_API)
+                .addApi(Places.PLACE_DETECTION_API)
+                .enableAutoManage(this, this)
+                .build();
 
     }
 }

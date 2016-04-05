@@ -4,7 +4,9 @@
     android:layout_height="wrap_content"
     android:weightSum="6"
     android:background="@color/place_layout_color"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:elevation="2dp"
+    >
 
 
 
