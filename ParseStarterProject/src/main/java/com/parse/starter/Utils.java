@@ -1,6 +1,7 @@
 package com.parse.starter;
 
 import android.content.Context;
+import android.widget.ImageView;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.places.Places;
@@ -27,6 +28,14 @@ public class Utils {
                 return context.getText(R.string.param_6);
             default:
                 return "default string";
+        }
+    }
+
+    public static void setImgFromRcs(Context context, ImageView imageView, String name) {
+        int imgId = context.getResources().getIdentifier("p".concat(name.toLowerCase()), "mipmap", context.getPackageName());
+
+        if (imgId != 0) {
+            imageView.setImageResource(imgId);
         }
     }
 

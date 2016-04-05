@@ -10,7 +10,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:src="@mipmap/p1rvuwep28h"
-        android:id="@+id/logo_image_view"
+        android:id="@+id/mini_header_logo_image_view"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -21,9 +21,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Macdonalds"
-        android:id="@+id/place_name_text_view"
+        android:id="@+id/mini_header_place_name_text_view"
         android:textStyle="bold"
-        android:layout_below="@+id/logo_image_view"
+        android:layout_below="@+id/mini_header_logo_image_view"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -33,7 +33,7 @@
         android:weightSum="6"
         android:background="@color/place_layout_color"
         android:padding="10dp"
-        android:layout_toRightOf="@id/place_name_text_view">
+        android:layout_toRightOf="@id/mini_header_place_name_text_view">
 
         <android.widget.Space
             android:layout_width="1dp"

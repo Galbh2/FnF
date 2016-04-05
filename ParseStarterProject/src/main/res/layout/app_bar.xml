@@ -8,7 +8,6 @@
     android:background="@color/primaryColor"
     app:theme="@style/ToolBarTheme"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    app:subtitle="@string/slogen"
     app:title="@string/app_name"
     app:paddingStart="72dp"
     android:elevation="12dp"

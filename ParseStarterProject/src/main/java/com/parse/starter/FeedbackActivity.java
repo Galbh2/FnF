@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.security.KeyStore;
 
@@ -23,7 +24,8 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
     private Toolbar toolBar;
     ViewPager viewPager;
     final Param[] params = new Param[NUM_OF_PARAMS];
-    private ImageView right, left;
+    private ImageView right, left, logo;
+    private TextView nameTextView;
     private Button[] circles = new Button[NUM_OF_PARAMS];
 
 
@@ -55,6 +57,8 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
 
         right = (ImageView) findViewById(R.id.right_arrow);
         left = (ImageView) findViewById((R.id.left_arrow));
+        logo = (ImageView) findViewById(R.id.mini_header_logo_image_view);
+        nameTextView = (TextView) findViewById(R.id.mini_header_place_name_text_view);
 
         circles[0] = (Button) findViewById(R.id.circle_a);
         circles[1] = (Button) findViewById(R.id.circle_b);
@@ -66,6 +70,14 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
 
         right.setOnClickListener(this);
         left.setOnClickListener(this);
+
+        Bundle b = getIntent().getExtras();
+
+        Utils.setImgFromRcs(this, logo, b.getString("ID"));
+        nameTextView.setText(b.getString("NAME"));
+
+
+
     }
 
     private void setToolBar() {
