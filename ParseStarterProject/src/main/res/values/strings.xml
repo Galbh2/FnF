@@ -14,8 +14,9 @@
     <string name="app_name">JOOBA</string>
     <string name="hello_world">Hello World!</string>
     <string name="action_settings">Settings</string>
-    <string name="slogen">The Most Fair Job For Me</string>
+    <string name="slogen">מקומות העבודה \n הכי פיירים</string>
     <string name="opening_houers">Opening Hours:</string>
+    <string name="new_job">משרה חדשה</string>
 
     <string name="yes">כן</string>
     <string name="no">לא</string>

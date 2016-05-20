@@ -12,12 +12,30 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 tools:context=".MainActivity"
-                android:background="@color/back_grey">
+                android:background="@color/default_background">
 
     <include
         android:id="@+id/appBar"
         layout="@layout/app_bar"
         />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/primaryColor">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/slogen"
+            android:textColor="#ffffff"
+            android:textSize="26sp"
+            android:fontFamily="sans-serif-light"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

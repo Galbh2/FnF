@@ -2,38 +2,53 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:layout_marginBottom="4dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginLeft="8dp"
     android:padding="10dp"
-    android:background="@color/place_layout_color">
+    android:background="@color/place_layout_color"
+    android:elevation="2dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Macdonalds"
+        android:text="מקדונלדס"
+        android:textColor="#000000"
         android:id="@+id/name_text_view"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:layout_alignTop="@+id/logo_image_view"
-        android:layout_toRightOf="@+id/logo_image_view"
-        android:layout_toEndOf="@+id/logo_image_view"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:shadowColor="#000000"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="1"
         android:fontFamily="sans-serif-light"
-
-        />
+        android:layout_marginTop="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/address_text_view"
+        android:layout_alignEnd="@+id/address_text_view" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cinema City, Rishon Lzion"
+        android:text="סינמה סיטיה, ראשון לציון"
+        android:textColor="#000000"
         android:id="@+id/address_text_view"
         android:layout_below="@+id/name_text_view"
-        android:layout_alignLeft="@+id/name_text_view"
-        android:layout_alignStart="@+id/name_text_view"
-        android:layout_marginTop="4dp"/>
+        android:layout_toLeftOf="@+id/logo_image_view"
+        android:layout_toStartOf="@+id/logo_image_view"
+        android:textSize="10sp"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="2dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primaryColor"
+        android:textSize="10sp"
+        android:text="@string/new_job"
+        android:layout_toLeftOf="@+id/logo_image_view"
+        android:layout_toStartOf="@+id/logo_image_view"
+        android:layout_below="@+id/address_text_view"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="2dp"
+        android:id="@+id/new_job_text_view" />
 
 
     <ImageView
@@ -42,39 +57,48 @@
         android:src="@mipmap/p1rvuwep28h"
         android:id="@+id/logo_image_view"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@mipmap/wings"
-        android:id="@+id/wings_image_view"
-        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/wing_orange_scale"
+        android:id="@+id/wings_image_view_orange"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/left_arrow"
+        android:layout_toEndOf="@id/left_arrow"
+     />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/wing_purple_scale"
+        android:id="@+id/wings_image_view_purple"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/left_arrow"
+        android:layout_toEndOf="@id/left_arrow" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@mipmap/left_arrow"
+        android:id="@+id/left_arrow"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginRight="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="9.9"
         android:id="@+id/grade_text_view"
-        android:layout_alignTop="@id/wings_image_view"
-        android:layout_alignBottom="@id/wings_image_view"
-        android:layout_alignLeft="@id/wings_image_view"
-        android:layout_alignRight="@+id/wings_image_view"
-        android:layout_alignEnd="@+id/wings_image_view"
-        android:layout_marginLeft="15.5dp"
-        android:layout_marginTop="14dp"/>
-
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/open_job_image_view"
-        android:src="@mipmap/person"
-
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/address_text_view"
-        android:layout_toEndOf="@+id/address_text_view" />
+        android:layout_alignRight="@+id/wings_image_view_orange"
+        android:layout_alignEnd="@+id/wings_image_view_orange"
+        android:layout_marginRight="19dp"
+        android:layout_marginEnd="19dp" />
+
 
 </RelativeLayout>

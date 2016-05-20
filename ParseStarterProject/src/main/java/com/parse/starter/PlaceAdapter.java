@@ -1,6 +1,7 @@
 package com.parse.starter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,9 +64,18 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
             holder.gradeTextView.setText(String.format("%.1f", myPlace.getGrade()));
         }
 
+        // Set up the wings and the color of the grade
+
+        if ( (position % 2) == 0) {
+            holder.wingsPurple.setVisibility(View.INVISIBLE);
+            holder.gradeTextView.setTextColor(Color.parseColor("#e57f3e"));
+        } else {
+            holder.wingsOrange.setVisibility(View.INVISIBLE);
+            holder.gradeTextView.setTextColor(Color.parseColor("#9d22b2"));
+        }
 
         if (!myPlace.isOpenJobs()) {
-            holder.openJobsImageView.setVisibility(View.INVISIBLE);
+            holder.openJobsText.setVisibility(View.INVISIBLE);
         }
 
         // This section parse the name of the logo and gets it from the "mipmap" folder..
@@ -91,7 +101,10 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
         TextView addressTextView;
         ImageView logoImageView;
         TextView gradeTextView;
-        ImageView openJobsImageView;
+        TextView openJobsText;
+
+        ImageView wingsOrange;
+        ImageView wingsPurple;
 
         public MyViewHolder(View itemView){
             super(itemView);
@@ -100,7 +113,10 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
             addressTextView = (TextView) itemView.findViewById(R.id.address_text_view);
             logoImageView = (ImageView) itemView.findViewById(R.id.logo_image_view);
             gradeTextView = (TextView) itemView.findViewById(R.id.grade_text_view);
-            openJobsImageView = (ImageView) itemView.findViewById(R.id.open_job_image_view);
+            openJobsText = (TextView) itemView.findViewById(R.id.new_job_text_view);
+
+            wingsOrange = (ImageView) itemView.findViewById(R.id.wings_image_view_orange);
+            wingsPurple = (ImageView) itemView.findViewById(R.id.wings_image_view_purple);
 
             itemView.setOnClickListener(this);
         }
