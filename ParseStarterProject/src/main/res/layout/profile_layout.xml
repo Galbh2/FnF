@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/back_grey">
+    android:background="@color/default_background">
 
     <include
         android:id="@+id/appBar"
@@ -13,6 +13,10 @@
         layout="@layout/profile_header_layout" />
 
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/profile_template"/>
 
 
 

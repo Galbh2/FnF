@@ -34,7 +34,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
 
     private FloatingActionButton fab;
     private ImageView logoImageView;
-    private TextView placeNameTextView, gradeTextView;
+    private TextView placeNameTextView, placeAdressTextView;
 
 
 
@@ -45,7 +45,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
 
         setToolBar();
         setViews();
-        setRecyclerView();
+        //setRecyclerView();
        // testData();
     }
 
@@ -97,8 +97,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
 
             logoImageView = (ImageView) findViewById(R.id.logo_image_view);
             placeNameTextView = (TextView) findViewById(R.id.place_name_text_view);
-            gradeTextView = (TextView) findViewById(R.id.grade_text_view);
             fab = (FloatingActionButton) findViewById(R.id.fab);
+            placeAdressTextView = (TextView) findViewById(R.id.address_text_view);
 
             //Sets listeners
 
@@ -113,12 +113,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
             //Sets the name
             placeNameTextView.setText(extras.getString("NAME"));
 
-            //Sets the grade
-            if (extras.getDouble("GRADE") == 10) {
-              gradeTextView.setText(String.format("%.0f", extras.getDouble("GRADE")));
-            } else {
-                gradeTextView.setText(String.format("%.1f", extras.getDouble("GRADE")));
-            }
+            // Sets the adress
+
+            placeAdressTextView.setText(extras.getString("ADDRESS"));
 
             //Sets the job icon
             //    if (!extras.getBoolean("JOB")) {
