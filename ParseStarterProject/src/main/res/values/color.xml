@@ -3,14 +3,14 @@
 
     <color name="primaryColor">#9d22b2</color>
     <color name="primaryColorDark">#7c19a3</color>
-    <color name="accentColor">#a7ffeb</color>
+    <color name="accentColor">#ff561c</color>
     <color name="place_layout_color">#ffffff</color>
     <color name="recycler_view_background">#ffffff</color>
 
     <color name="default_background">#fff6f3</color>
 
-    <color name="circle">#d1c4e9</color>
-    <color name="ring">#b39ddb</color>
+    <color name="ring">#ffffff</color>
+    <color name="circle">#000000</color>
     <color name="back_grey">#eeeeee</color>
 
 

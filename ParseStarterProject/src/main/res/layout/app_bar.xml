@@ -9,7 +9,6 @@
     android:elevation="12dp"
     android:titleTextAppearance="@style/ToolBarTheme"
 
-
     >
 
     <RelativeLayout

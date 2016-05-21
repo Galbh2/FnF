@@ -36,6 +36,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
     private ImageView logoImageView;
     private TextView placeNameTextView, placeAdressTextView;
 
+    private ImageView m_Param_1_Bool, m_Param_2_Bool, m_Param_4_Bool, m_Param_5_Bool, m_Param_6_Bool;
+    private TextView m_Param_3_Text;
+
 
 
     @Override
@@ -95,10 +98,34 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
 
         if (extras != null) {
 
+            // Header
+
             logoImageView = (ImageView) findViewById(R.id.logo_image_view);
             placeNameTextView = (TextView) findViewById(R.id.place_name_text_view);
             fab = (FloatingActionButton) findViewById(R.id.fab);
             placeAdressTextView = (TextView) findViewById(R.id.address_text_view);
+
+            // Body
+
+            m_Param_1_Bool = (ImageView) findViewById(R.id.param_1_bool);
+            m_Param_2_Bool = (ImageView) findViewById(R.id.param_2_bool);
+            m_Param_4_Bool = (ImageView) findViewById(R.id.param_4_bool);
+            m_Param_5_Bool = (ImageView) findViewById(R.id.param_5_bool);
+            m_Param_6_Bool = (ImageView) findViewById(R.id.param_6_bool);
+
+            ImageView[] boolParamsArray = {m_Param_1_Bool, m_Param_2_Bool, m_Param_4_Bool,
+                                            m_Param_5_Bool, m_Param_6_Bool};
+
+            m_Param_3_Text = (TextView) findViewById(R.id.param_3_text);
+
+            setBoolImage(m_Param_1_Bool, true);
+            setBoolImage(m_Param_2_Bool, false);
+            setBoolImage(m_Param_4_Bool, true);
+            setBoolImage(m_Param_5_Bool, true);
+            setBoolImage(m_Param_6_Bool, false);
+
+            m_Param_3_Text.setText("30");
+
 
             //Sets listeners
 
@@ -128,6 +155,16 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
             Log.d("Profile Activity", "Extras = null");
         }
     }
+
+    private void setBoolImage(ImageView i_Image, boolean i_Value) {
+        if (i_Value) {
+            i_Image.setImageResource(R.mipmap.v);
+        } else {
+            i_Image.setImageResource(R.mipmap.x);
+        }
+    }
+
+
 
     private void testData() {
 

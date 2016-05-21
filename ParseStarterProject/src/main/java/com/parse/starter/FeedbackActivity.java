@@ -24,7 +24,7 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
     private Toolbar toolBar;
     ViewPager viewPager;
     final Param[] params = new Param[NUM_OF_PARAMS];
-    private ImageView right, left, logo;
+    private ImageView logo;
     private TextView nameTextView;
     private Button[] circles = new Button[NUM_OF_PARAMS];
 
@@ -55,28 +55,17 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
 
     private void setUpViews() {
 
-        right = (ImageView) findViewById(R.id.right_arrow);
-        left = (ImageView) findViewById((R.id.left_arrow));
-        logo = (ImageView) findViewById(R.id.mini_header_logo_image_view);
-        nameTextView = (TextView) findViewById(R.id.mini_header_place_name_text_view);
+      //  logo = (ImageView) findViewById(R.id.mini_header_logo_image_view);
+      //  nameTextView = (TextView) findViewById(R.id.mini_header_place_name_text_view);
 
         circles[0] = (Button) findViewById(R.id.circle_a);
         circles[1] = (Button) findViewById(R.id.circle_b);
         circles[2] = (Button) findViewById(R.id.circle_c);
         circles[3] = (Button) findViewById(R.id.circle_d);
-        circles[4] = (Button) findViewById(R.id.circle_f);
-        circles[5] = (Button) findViewById(R.id.circle_g);
+        circles[4] = (Button) findViewById(R.id.circle_e);
+        circles[5] = (Button) findViewById(R.id.circle_f);
 
-
-        right.setOnClickListener(this);
-        left.setOnClickListener(this);
-
-        Bundle b = getIntent().getExtras();
-
-        Utils.setImgFromRcs(this, logo, b.getString("ID"));
-        nameTextView.setText(b.getString("NAME"));
-
-
+        //Bundle b = getIntent().getExtras();
 
     }
 
@@ -85,17 +74,6 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
         setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-    }
-
-    @Override
-    public void onClick(View v) {
-
-        if (v == left) {
-            down();
-        } else if (v == right) {
-            up();
-        }
-
     }
 
     private void up() {
@@ -141,6 +119,11 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
             public void onPageScrollStateChanged(int state) {
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     //Adapter for the view pager

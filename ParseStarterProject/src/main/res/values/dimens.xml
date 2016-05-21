@@ -11,5 +11,13 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="hand_size_w">25dp</dimen>
+    <dimen name="hand_size_h">25dp</dimen>
+
+    <dimen name="text_param_w">60dp</dimen>
+    <dimen name="text_param_h">25dp</dimen>
+
+    <dimen name="feedback_freg_h">250dp</dimen>
+
     <dimen name="header">100dp</dimen>
 </resources>
