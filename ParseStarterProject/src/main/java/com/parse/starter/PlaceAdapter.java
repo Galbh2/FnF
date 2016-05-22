@@ -68,9 +68,11 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
 
         if ( (position % 2) == 0) {
             holder.wingsPurple.setVisibility(View.INVISIBLE);
+            holder.wingsOrange.setVisibility(View.VISIBLE);
             holder.gradeTextView.setTextColor(Color.parseColor("#e57f3e"));
         } else {
             holder.wingsOrange.setVisibility(View.INVISIBLE);
+            holder.wingsPurple.setVisibility(View.VISIBLE);
             holder.gradeTextView.setTextColor(Color.parseColor("#9d22b2"));
         }
 
@@ -84,10 +86,17 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
         MyAnimations.animatePlace(holder, lastPosition, position, context);
         lastPosition = position;
 
-        int imgId = context.getResources().getIdentifier("p".concat(myPlace.getId().toLowerCase()), "mipmap", context.getPackageName());
-        if (imgId != 0) {
+        if (myPlace.getImage() != null) {
+            holder.logoImageView.setImageBitmap(myPlace.getImage());
+        } else {
+            int imgId = context.getResources().getIdentifier("joba_small_logo_scaled", "mipmap", context.getPackageName());
             holder.logoImageView.setImageResource(imgId);
         }
+
+       // int imgId = context.getResources().getIdentifier("p".concat(myPlace.getId().toLowerCase()), "mipmap", context.getPackageName());
+       // if (imgId != 0) {
+          //  holder.logoImageView.setImageResource(imgId);
+     //   }
     }
 
     @Override
@@ -138,6 +147,8 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
      *
      * @return A list with data to test
      */
+
+    /*
     private List generateDate() {
 
         List<MyPlace> list = new LinkedList<MyPlace>();
@@ -158,6 +169,6 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
         Collections.sort(list, c.sortByGrade());
 
         return list;
-
     }
+    */
 }

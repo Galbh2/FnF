@@ -54,7 +54,7 @@
     <ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@mipmap/p1rvuwep28h"
+        android:src="@mipmap/joba_small_logo_scaled"
         android:id="@+id/logo_image_view"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"

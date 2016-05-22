@@ -34,7 +34,7 @@ public class Splash extends AppCompatActivity {
         circles[1] = (ImageView) findViewById(R.id.circle_b);
         circles[2] = (ImageView) findViewById(R.id.circle_c);
 
-        animation = new AnimationTask().execute();
+       // animation = new AnimationTask().execute();
         getPlacesFromCloud();
 
     }
@@ -58,10 +58,13 @@ public class Splash extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         Log.d("callbackg", "onPause");
+
+        /*
         if (animation != null && animation.getStatus() == AsyncTask.Status.RUNNING) {
             animation.cancel(true);
         }
         finish();
+        */
     }
 
     @Override

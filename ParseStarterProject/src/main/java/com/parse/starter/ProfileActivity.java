@@ -3,6 +3,7 @@ package com.parse.starter;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -105,6 +106,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
             fab = (FloatingActionButton) findViewById(R.id.fab);
             placeAdressTextView = (TextView) findViewById(R.id.address_text_view);
 
+            logoImageView.setImageBitmap((Bitmap) extras.getParcelable("IMAGE"));
+
             // Body
 
             m_Param_1_Bool = (ImageView) findViewById(R.id.param_1_bool);
@@ -131,12 +134,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
 
             fab.setOnClickListener(this);
 
-            //Sets the logo
-            int imgId = getResources().getIdentifier("p".concat(extras.getString("ID").toLowerCase()), "mipmap", getPackageName());
-
-            if (imgId != 0) {
-                logoImageView.setImageResource(imgId);
-            }
             //Sets the name
             placeNameTextView.setText(extras.getString("NAME"));
 

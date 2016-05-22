@@ -9,6 +9,9 @@
 package com.parse.starter;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +21,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -34,6 +38,10 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,16 +52,21 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
     private Toolbar toolBar;
     private RecyclerView recyclerView;
     public static ArrayList<MyPlace> placesList = new ArrayList<MyPlace>();
+    public ArrayList<MyPlace> m_PlaceListFromGoogle;
     protected GoogleApiClient mGoogleApiClient;
+    private final Fire m_NetManager = new Fire();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
+
+        new DownloadTask().execute(new String[2]);
         setToolBar();
-        setRecyclerView();
-        testData();
+
+
+
         buildGoogleApiClient();
         setAutoCompleteFrag();
 
@@ -90,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
 
     private void testData() {
 
-        if (placesList.size() == 0) {
+        if (m_PlaceListFromGoogle.size() == 0) {
             Toast.makeText(this, "Something went wrong, please check your internet connection", Toast.LENGTH_LONG).show();
         }
 
@@ -137,14 +150,14 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
     }
 
     private void reset(){
-        getPlacesFromCloud();
+       // getPlacesFromCloud();
     }
 
     private void setRecyclerView() {
 
         recyclerView = (RecyclerView) findViewById(R.id.places_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new PlaceAdapter(this, placesList));
+        recyclerView.setAdapter(new PlaceAdapter(this, m_PlaceListFromGoogle));
 
     }
 
@@ -181,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
     @Override
     public void itemClicked(View view, int position) {
 
-        MyPlace p = placesList.get(position);
+        MyPlace p = m_PlaceListFromGoogle.get(position);
 
         Bundle bundle = new Bundle();
         bundle.putString("ID", p.getId());
@@ -189,6 +202,7 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
         bundle.putDouble("GRADE", p.getGrade());
         bundle.putBoolean("JOB", p.isOpenJobs());
         bundle.putString("ADDRESS", p.getAddress());
+        bundle.putParcelable("IMAGE", p.getImage());
 
 
         Intent intent = new Intent(this, ProfileActivity.class);
@@ -196,8 +210,6 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
         startActivity(intent);
 
     }
-
-
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
@@ -212,5 +224,76 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
                 .enableAutoManage(this, this)
                 .build();
 
+    }
+
+    private class DownloadTask extends AsyncTask<String[], Integer, ArrayList<MyPlace>> {
+
+        @Override
+        protected ArrayList<MyPlace> doInBackground(String[]... params) {
+            Log.d("DownloadTask", "started");
+            String data = m_NetManager.doRequest("3000", "restaurant", "333");
+            return Fire.fromJsonToObjects(data);
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<MyPlace> myPlaces) {
+            m_PlaceListFromGoogle = myPlaces;
+            Log.d("listSize", String.valueOf(myPlaces.size()));
+            setRecyclerView();
+            recyclerView.getAdapter().notifyDataSetChanged();
+            testData();
+            new DownloadImageTask().execute();
+        }
+    }
+
+    private class DownloadImageTask extends AsyncTask<Void, Integer, Bitmap> {
+
+        @Override
+        protected Bitmap doInBackground(Void... params) {
+
+
+            String ref;
+            InputStream in = null;
+            for (int i = 0; i < m_PlaceListFromGoogle.size(); i++) {
+                try {
+                    MyPlace p = m_PlaceListFromGoogle.get(i);
+                    ref = p.getPhotoRef();
+
+                    if (ref != null && !ref.equals("")) {
+                        in = m_NetManager.downloadImage(ref);
+                        p.setImage(BitmapFactory.decodeStream(in));
+                    }
+                } catch (Exception e) {
+                    Log.e("ImageError", e.getMessage());
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (in != null) {
+                            in.close();
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                publishProgress(i);
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            recyclerView.getAdapter().notifyItemChanged(values[0]);
+        }
+
+
+        protected void onPostExecute(Bitmap result) {
+            //bmImage.setImageBitmap(result);
+        }
     }
 }
