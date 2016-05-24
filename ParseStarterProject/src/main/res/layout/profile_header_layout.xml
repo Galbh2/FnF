@@ -13,7 +13,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:alpha="0.7"
-        android:src="@mipmap/p1rvuwep28h"
+        android:src="@mipmap/joba_small_logo_scaled"
         android:id="@+id/logo_image_view"
         android:layout_alignTop="@+id/grade_text_view"
         android:layout_alignParentRight="true"

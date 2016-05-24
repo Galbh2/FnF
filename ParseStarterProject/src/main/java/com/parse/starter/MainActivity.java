@@ -8,10 +8,15 @@
  */
 package com.parse.starter;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Location;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,6 +31,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.Place;
@@ -46,7 +52,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements PlaceAdapter.PlaceClickListener, GoogleApiClient.OnConnectionFailedListener{
+public class MainActivity extends AppCompatActivity implements PlaceAdapter.PlaceClickListener,
+        GoogleApiClient.OnConnectionFailedListener, ConnectionCallbacks {
 
     final static int LIMIT = 50;
     private Toolbar toolBar;
@@ -55,6 +62,11 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
     public ArrayList<MyPlace> m_PlaceListFromGoogle;
     protected GoogleApiClient mGoogleApiClient;
     private final Fire m_NetManager = new Fire();
+    private ParseQuery<ParseObject> m_ParseQuery;
+    private DownloadImageTask m_DownloadImageTask;
+    private String mLatitude = "32.185533";
+    private String mLongitud = "34.854347";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +74,12 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
         setContentView(R.layout.activity_main);
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
+        buildGoogleApiClient();
+
         new DownloadTask().execute(new String[2]);
         setToolBar();
 
 
-
-        buildGoogleApiClient();
         setAutoCompleteFrag();
 
         //ParseObject testObject = new ParseObject("TestObject");
@@ -79,18 +91,33 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
 
     }
 
+    @Override
+    protected void onStart() {
+        mGoogleApiClient.connect();
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        mGoogleApiClient.disconnect();
+        stopParseWork();
+        stopImgWork();
+        super.onStop();
+    }
+
     private void setAutoCompleteFrag() {
 
         SupportPlaceAutocompleteFragment autocompleteFragment = (SupportPlaceAutocompleteFragment)
                 getSupportFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
 
-
-
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
-                Log.i("msg", "Place: " + place.getName());
+                stopImgWork();
+                stopParseWork();
+                new DownloadSinglePlaceTask().execute(place.getId().toString());
+
             }
 
             @Override
@@ -99,6 +126,16 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
                 Log.i("msg", "An error occurred: " + status);
             }
         });
+    }
+
+    private void stopImgWork() {
+        if (m_DownloadImageTask.getStatus() == AsyncTask.Status.RUNNING) {
+            m_DownloadImageTask.cancel(true);
+        }
+    }
+
+    private void stopParseWork() {
+        m_ParseQuery.cancel();
     }
 
     private void testData() {
@@ -139,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
      * for an update of the view.
      * @param dataFromCloud
      */
-    private void bindDataFromCloud (List<ParseObject> dataFromCloud) {
+    private void bindDataFromCloud(List<ParseObject> dataFromCloud) {
 
         for (ParseObject o : dataFromCloud) {
             placesList.add(new MyPlace(o.getObjectId(), o.getString("name"), o.getString("address"),
@@ -149,8 +186,8 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
         recyclerView.getAdapter().notifyDataSetChanged();
     }
 
-    private void reset(){
-       // getPlacesFromCloud();
+    private void reset() {
+        // getPlacesFromCloud();
     }
 
     private void setRecyclerView() {
@@ -197,13 +234,13 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
         MyPlace p = m_PlaceListFromGoogle.get(position);
 
         Bundle bundle = new Bundle();
-        bundle.putString("ID", p.getId());
+        bundle.putString("gID", p.getId());
         bundle.putString("NAME", p.getName());
         bundle.putDouble("GRADE", p.getGrade());
         bundle.putBoolean("JOB", p.isOpenJobs());
         bundle.putString("ADDRESS", p.getAddress());
         bundle.putParcelable("IMAGE", p.getImage());
-
+        bundle.putIntArray("RESULTS", p.getResults());
 
         Intent intent = new Intent(this, ProfileActivity.class);
         intent.putExtras(bundle);
@@ -221,17 +258,41 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
                 .Builder(this)
                 .addApi(Places.GEO_DATA_API)
                 .addApi(Places.PLACE_DETECTION_API)
+                .addApi(LocationServices.API)
                 .enableAutoManage(this, this)
                 .build();
 
     }
+
+
+    @Override
+    public void onConnected(Bundle bundle) {
+
+        try {
+            Location lastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+            if (lastLocation != null) {
+                mLatitude = String.valueOf(lastLocation.getLatitude());
+                mLongitud = String.valueOf(lastLocation.getLongitude());
+            }
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
 
     private class DownloadTask extends AsyncTask<String[], Integer, ArrayList<MyPlace>> {
 
         @Override
         protected ArrayList<MyPlace> doInBackground(String[]... params) {
             Log.d("DownloadTask", "started");
-            String data = m_NetManager.doRequest("3000", "restaurant", "333");
+            Log.d("lati", mLatitude);
+            Log.d("long", mLongitud);
+            String data = m_NetManager.doRequest("3000", "restaurant", mLatitude, mLongitud);
             return Fire.fromJsonToObjects(data);
         }
 
@@ -247,7 +308,60 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
             setRecyclerView();
             recyclerView.getAdapter().notifyDataSetChanged();
             testData();
-            new DownloadImageTask().execute();
+            m_DownloadImageTask = new DownloadImageTask();
+            m_DownloadImageTask.execute();
+            calcGrades();
+        }
+    }
+
+    private void calcGrades() {
+
+        for (int i = 0; i < m_PlaceListFromGoogle.size(); i++) {
+
+            final MyPlace place = m_PlaceListFromGoogle.get(i);
+            final int index = i;
+
+            m_ParseQuery = ParseQuery.getQuery("Feedback");
+            m_ParseQuery.whereEqualTo("gID", place.getId());
+
+
+            m_ParseQuery.findInBackground(new FindCallback<ParseObject>() {
+                @Override
+                public void done(List<ParseObject> objects, ParseException e) {
+                    if (e != null){
+                        Log.e("getGradeError", e.getMessage());
+                    } else {
+                        GradeCalc.calcParams(objects, place);
+                        setGrades(index);
+                    }
+                }
+            });
+        }
+    }
+
+    public void setGrades(int i_Index) {
+
+        recyclerView.getAdapter().notifyItemChanged(i_Index);
+
+    }
+
+    private class DownloadSinglePlaceTask extends AsyncTask<String, Void, MyPlace> {
+
+        @Override
+        protected MyPlace doInBackground(String... params) {
+            String j = m_NetManager.doRequest(params[0]);
+            return Fire.fromJsonToOneObject(j);
+        }
+
+        @Override
+        protected void onPostExecute(MyPlace myPlace) {
+            m_PlaceListFromGoogle.clear();
+            m_PlaceListFromGoogle.add(myPlace);
+            recyclerView.getAdapter().notifyDataSetChanged();
+            calcGrades();
+            m_DownloadImageTask = new DownloadImageTask();
+            m_DownloadImageTask.execute();
+
         }
     }
 
@@ -256,11 +370,13 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
         @Override
         protected Bitmap doInBackground(Void... params) {
 
-
             String ref;
             InputStream in = null;
             for (int i = 0; i < m_PlaceListFromGoogle.size(); i++) {
                 try {
+                    if (isCancelled()) {
+                        break;
+                    }
                     MyPlace p = m_PlaceListFromGoogle.get(i);
                     ref = p.getPhotoRef();
 
@@ -275,11 +391,21 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
                     try {
                         if (in != null) {
                             in.close();
+                            in = null;
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
+
+                if (in != null) {
+                    try {
+                        in.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
                 publishProgress(i);
             }
 

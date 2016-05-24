@@ -106,6 +106,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
             fab = (FloatingActionButton) findViewById(R.id.fab);
             placeAdressTextView = (TextView) findViewById(R.id.address_text_view);
 
+            int results[] = extras.getIntArray("RESULTS");
             logoImageView.setImageBitmap((Bitmap) extras.getParcelable("IMAGE"));
 
             // Body
@@ -121,14 +122,15 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
 
             m_Param_3_Text = (TextView) findViewById(R.id.param_3_text);
 
-            setBoolImage(m_Param_1_Bool, true);
-            setBoolImage(m_Param_2_Bool, false);
-            setBoolImage(m_Param_4_Bool, true);
-            setBoolImage(m_Param_5_Bool, true);
-            setBoolImage(m_Param_6_Bool, false);
+            if (results != null) {
+                setBoolImage(m_Param_1_Bool, GradeCalc.intToBool(results[0]));
+                setBoolImage(m_Param_2_Bool, GradeCalc.intToBool(results[1]));
+                setBoolImage(m_Param_4_Bool, GradeCalc.intToBool(results[3]));
+                setBoolImage(m_Param_5_Bool, GradeCalc.intToBool(results[4]));
+                setBoolImage(m_Param_6_Bool, GradeCalc.intToBool(results[5]));
 
-            m_Param_3_Text.setText("30");
-
+                m_Param_3_Text.setText(String.valueOf(results[2]));
+            }
 
             //Sets listeners
 

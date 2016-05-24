@@ -16,6 +16,7 @@ public class MyPlace {
     private double grade;
     private boolean openJobs;
     private Bitmap m_Image = null;
+    private int[] m_Results;
 
     /**
      *
@@ -66,12 +67,11 @@ public class MyPlace {
 
 
     public double getGrade() {
-        return grade;
+
+        return m_Results != null ? m_Results[6] : 0;
     }
 
-    public void setGrade(double grade) {
-        this.grade = grade;
-    }
+
 
     public boolean isOpenJobs() {
         return openJobs;
@@ -105,5 +105,13 @@ public class MyPlace {
                 ", address='" + address + '\'' +
                 ", photoRef='" + photoRef + '\'' +
                 '}' + '\n';
+    }
+
+    public int[] getResults() {
+        return m_Results;
+    }
+
+    public void setResults(int[] m_Result) {
+        this.m_Results = m_Result;
     }
 }

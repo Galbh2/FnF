@@ -12,6 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.maps.model.TileOverlay;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.SaveCallback;
 
 import java.security.KeyStore;
 
@@ -25,6 +31,7 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
     ViewPager viewPager;
     final Param[] params = new Param[NUM_OF_PARAMS];
     private ImageView logo;
+    private Button m_SendButton;
     private TextView nameTextView;
     private Button[] circles = new Button[NUM_OF_PARAMS];
 
@@ -65,6 +72,8 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
         circles[4] = (Button) findViewById(R.id.circle_e);
         circles[5] = (Button) findViewById(R.id.circle_f);
 
+        m_SendButton = (Button) findViewById(R.id.send_button);
+        m_SendButton.setOnClickListener(this);
         //Bundle b = getIntent().getExtras();
 
     }
@@ -101,28 +110,84 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
 
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
             }
 
             @Override
             public void onPageSelected(int position) {
 
-              if (position > lastPosition) {
+                // send button logic
+
+                if (position == 5) {
+                    m_SendButton.setVisibility(View.VISIBLE);
+                } else if (lastPosition == 5) {
+                    m_SendButton.setVisibility(View.INVISIBLE);
+                }
+
+
+                if (position > lastPosition) {
                     circles[position].setEnabled(true);
-              } else {
+                } else {
                     circles[lastPosition].setEnabled(false);
-              }
+                }
 
                 lastPosition = position;
 
             }
+
             @Override
             public void onPageScrollStateChanged(int state) {
             }
         });
     }
 
+    private void showMsg() {
+        Toast.makeText(this, "Send !", Toast.LENGTH_LONG).show();
+    }
+
     @Override
     public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.send_button:
+                sendFeedback();
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    private void sendFeedback() {
+
+        Bundle b = getIntent().getExtras();
+
+        ParseObject feedback = new ParseObject("Feedback");
+
+        feedback.put("gID", b.getString("gID"));
+        feedback.put("name", b.getString("NAME"));
+
+        feedback.put("param_1_bool", params[0].getBoolData());
+        feedback.put("param_2_bool", params[1].getBoolData());
+        feedback.put("param_5_bool", params[4].getBoolData());
+        feedback.put("param_6_bool", params[5].getBoolData());
+
+        feedback.put("param_3_num", params[2].getNumData());
+
+        params[3].setNumData(0.75);
+
+        feedback.put("param_4_num", params[3].getNumData());
+
+        feedback.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e("save_error", e.getMessage());
+                }
+            }
+        });
+
+        Toast.makeText(this, "Sent!", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -139,12 +204,12 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
         public PageAdapter(FragmentManager fm) {
             super(fm);
 
-            frag1 = new Param1Frag();
-            frag2 = new Param2Frag();
-            frag3 = new Param3Frag();
-            frag4 = new Param4Frag();
+            frag2 = new Param1Frag();
+            frag3 = new Param2Frag();
+            frag1 = new Param3Frag();
+            frag6 = new Param4Frag();
             frag5 = new Param5Frag();
-            frag6 = new Param6Frag();
+            frag4 = new Param6Frag();
 
             Bundle b1 = new Bundle();
             Bundle b2 = new Bundle();

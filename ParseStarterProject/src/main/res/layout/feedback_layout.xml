@@ -58,9 +58,19 @@
             android:layout_marginRight="20dp"
             />
 
-
-
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="שלח"
+        android:visibility="invisible"
+        android:id="@+id/send_button"
+        android:layout_below="@id/wraper"
+        android:layout_alignRight="@id/wraper"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/accentColor"/>
 
 
 

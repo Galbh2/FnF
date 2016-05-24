@@ -1,11 +1,10 @@
 package com.parse.starter;
 
-import android.renderscript.ScriptGroup;
+
+import android.util.Log;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.NullNode;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,10 +14,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 
 /**
@@ -28,12 +25,13 @@ public class Fire {
 
     private final String ADDRESS = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?language=iw&";
     private final String KEY = "key=AIzaSyAfuZD5FPkCHj5cQ16_RuCDsQ7pQ-zVpiQ";
-    private String query = "location=32.185533,34.854347&radius=%s&type=%s&";
+    private String query = "location=%s,%s&radius=%s&type=%s&";
     private final String PHOTO_URL = "https://maps.googleapis.com/maps/api/place/photo?photoreference=%s&maxheight=100&maxwidth=100&";
+    private final String SINGLE_PLACE ="https://maps.googleapis.com/maps/api/place/details/json?language=iw&placeid=%s&";
   //  private String default_query = "location=32.185533,34.854347&radius=4000&type=restaurant&key=AIzaSyAfuZD5FPkCHj5cQ16_RuCDsQ7pQ-zVpiQ";
     private String NEXT_PAGE = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=%s&";
     private final String USER_AGENT = "Mozilla/5.0";
-    private final int WAIT = 3000;
+    private final int WAIT = 700;
 
     private String m_NextPageToken;
     private long m_LastRequestTime = 0;
@@ -58,6 +56,8 @@ public class Fire {
         String query = String.format(PHOTO_URL, i_PhotoRef) + KEY;
         //Bitmap bitmap = null;
 
+
+
         while ( (System.currentTimeMillis() - m_LastRequestTime) < 3000) {
             try {
                 Thread.sleep(WAIT);
@@ -69,6 +69,40 @@ public class Fire {
         m_LastRequestTime = System.currentTimeMillis();
 
         return new URL(query).openStream();
+    }
+
+    public static MyPlace fromJsonToOneObject(String i_Data){
+
+        MyPlace p = null;
+
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode root = mapper.readTree(i_Data);
+            JsonNode result = root.path("result");
+
+            JsonNode photoRef = result.get("photos");
+            String photo = null;
+            JsonNode photoEntry = null;
+
+            /**
+             * Handling empty photo array
+             */
+            if (photoRef != null && !photoRef.isNull()) {
+                if ((photoEntry = photoRef.get(0)) != null && !photoEntry.isNull()) {
+                    photo = photoEntry.get("photo_reference").asText();
+                }
+            }
+
+            p = new MyPlace(
+                result.get("place_id").asText(),
+                result.get("name").asText(),
+                result.get("vicinity").asText(),
+                photo);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return p;
     }
 
     public static ArrayList<MyPlace> fromJsonToObjects(String i_Data){
@@ -112,9 +146,15 @@ public class Fire {
         return list;
     }
 
-    public String doRequest(String i_Radius, String i_Type, String i_Location) {
+    public String doRequest(String i_Radius, String i_Type, String i_Latitude, String i_Longitude) {
 
-        String query = buildQuery(i_Radius, i_Type);
+        String query = buildQuery(i_Radius, i_Type, i_Latitude, i_Longitude);
+        return fire(query);
+    }
+
+    public String doRequest(String i_Id) {
+        String query = String.format(SINGLE_PLACE, i_Id) + KEY;
+        Log.d("query", query);
         return fire(query);
     }
 
@@ -166,9 +206,14 @@ public class Fire {
         }
     }
 
-    private String buildQuery(String i_Radius, String i_Type) {
-        return ADDRESS + String.format(query,
+    private String buildQuery(String i_Radius, String i_Type, String i_Latitude, String i_Longitude) {
+        String s = ADDRESS + String.format(query,
+                i_Latitude, i_Longitude,
                 i_Radius, i_Type) + KEY;
+
+        Log.d("query", s);
+
+        return s;
     }
 
     private URLConnection getConnection(String i_Link) {
