@@ -49,7 +49,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
 
         setToolBar();
         setViews();
-        //setRecyclerView();
+        setRecyclerView();
        // testData();
     }
 
@@ -157,9 +157,9 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
 
     private void setBoolImage(ImageView i_Image, boolean i_Value) {
         if (i_Value) {
-            i_Image.setImageResource(R.mipmap.v);
+            i_Image.setImageResource(R.mipmap.vv);
         } else {
-            i_Image.setImageResource(R.mipmap.x);
+            i_Image.setImageResource(R.mipmap.xx);
         }
     }
 

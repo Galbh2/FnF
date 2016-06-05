@@ -53,11 +53,14 @@
     <string name="param5_text">
         האם ניתן תשלום עבור ישיבות צוות ?
     </string>
-
-
-
-
-
+    <string name="work_until">עבודה עד השעה 22:00</string>
+    <string name="pay_for_ap">תשלום על התלמדות</string>
+    <string name="atmo">
+        אווירה במקום
+     \n
+    </string>
+    <string name="pay_for_t">תשלום על ישיבות צוות</string>
+    <string name="transport">תשלום על הוצאות נסיעה</string>
 
 
 </resources>

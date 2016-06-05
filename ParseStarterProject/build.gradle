@@ -4,10 +4,15 @@ apply plugin: 'com.parse'
 buildscript {
   repositories {
     mavenCentral()
-    maven { url 'https://maven.parse.com/repo' }
+   // maven { url 'http://maven.parse.com/repo' }
+
+    flatDir {
+      dirs 'libs'
+    }
   }
   dependencies {
-    classpath 'com.parse.tools:gradle:1.+'
+     classpath 'com.parse.tools:gradle:1.+'
+     // classpath 'gradle:1.+'
   }
 }
 

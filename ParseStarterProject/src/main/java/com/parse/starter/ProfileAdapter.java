@@ -24,27 +24,27 @@ import java.util.List;
  * This is a complex adapter. it chooses the correct layout to infiliate
  * according to the type of the Param (boolean or numeric)
  */
-public class ProfileAdapter extends RecyclerView.Adapter <RecyclerView.ViewHolder> {
+public class ProfileAdapter extends RecyclerView.Adapter <ProfileAdapter.TextViewHolder> {
 
-    private ArrayList<Param> paramsList;
+    private ArrayList<String> paramsList;
     private Context context;
     private LayoutInflater inflater;
 
     public ProfileAdapter(Context context){
         this.context = context;
         this.inflater = LayoutInflater.from(context);
-        this.paramsList = new ArrayList<>(generateDate());
+        this.paramsList = new ArrayList<>(generateDateForComments());
     }
 
-    public ProfileAdapter (Context context,  ArrayList<Param> list){
+    public ProfileAdapter (Context context,  ArrayList<String> list){
         this(context);
         paramsList = list;
     }
 
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
+    public ProfileAdapter.TextViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        /*
         RecyclerView.ViewHolder vh = null;
         View v = null;
 
@@ -59,11 +59,18 @@ public class ProfileAdapter extends RecyclerView.Adapter <RecyclerView.ViewHolde
                 break;
         }
 
-        return vh;
+
+
+        */
+        return new TextViewHolder(inflater.inflate(R.layout.comment_layout, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(TextViewHolder holder, int position) {
+
+        holder.bodyTextView.setText(paramsList.get(position));
+
+        /**
 
         Param p = paramsList.get(position);
 
@@ -89,6 +96,8 @@ public class ProfileAdapter extends RecyclerView.Adapter <RecyclerView.ViewHolde
                 break;
         }
 
+         */
+
     }
 
 
@@ -99,13 +108,14 @@ public class ProfileAdapter extends RecyclerView.Adapter <RecyclerView.ViewHolde
 
     @Override
     public int getItemViewType (int position) {
-
+        return super.getItemViewType(position);
         /*
         0 for boolean question
         1 for numeric question
          */
-
+/*
         return paramsList.get(position).getType();
+        */
     }
 
     public interface InfoClickListener {
@@ -114,39 +124,18 @@ public class ProfileAdapter extends RecyclerView.Adapter <RecyclerView.ViewHolde
     }
 
 
-    class NumViewHolder extends RecyclerView.ViewHolder {
+    class TextViewHolder extends RecyclerView.ViewHolder {
 
         TextView bodyTextView;
-        TextView subGradeTextView;
-        ImageView infoImageView;
 
-
-        public NumViewHolder(View itemView){
+        public TextViewHolder(View itemView){
             super(itemView);
 
             bodyTextView = (TextView) itemView.findViewById(R.id.body_text_view);
-            subGradeTextView = (TextView) itemView.findViewById(R.id.sub_grade_text_view);
-            infoImageView = (ImageView) itemView.findViewById((R.id.info_image_view));
-            infoImageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    InfoClickListener i = (InfoClickListener) context;
-
-                    /*
-                    int[] position = new int[2];
-                    v.getLocationInWindow(position);
-                    i.showInfoDialog(getAdapterPosition(),position);
-                    */
-
-                    i.showInfoDialog(getAdapterPosition());
-
-                }
-            });
         }
-
     }
 
-
+    /*
     class BoolViewHolder extends RecyclerView.ViewHolder {
 
         TextView bodyTextView;
@@ -164,11 +153,11 @@ public class ProfileAdapter extends RecyclerView.Adapter <RecyclerView.ViewHolde
                 public void onClick(View v) {
                     InfoClickListener i = (InfoClickListener) context;
 
-                    /*
+
                     int[] position = new int[2];
                     v.getLocationInWindow(position);
                     i.showInfoDialog(getAdapterPosition(),position);
-                    */
+
 
                     i.showInfoDialog(getAdapterPosition());
 
@@ -176,8 +165,9 @@ public class ProfileAdapter extends RecyclerView.Adapter <RecyclerView.ViewHolde
             });
 
         }
-    }
 
+    }
+*/
 
 
     /**
@@ -194,6 +184,17 @@ public class ProfileAdapter extends RecyclerView.Adapter <RecyclerView.ViewHolde
         list.add(new Param("Payments for transportation", true));
         list.add(new Param("Payment for crew meetings",true));
         list.add(new Param("General atmosphere", 7));
+
+        return list;
+
+    }
+
+    private List generateDateForComments() {
+
+        List<String> list = new LinkedList<String>();
+
+        list.add("המקום הכי שווה בעיר");
+        list.add("מקום עבודה מומלץ");
 
         return list;
 

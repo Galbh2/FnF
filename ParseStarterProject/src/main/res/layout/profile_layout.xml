@@ -15,92 +15,253 @@
         layout="@layout/profile_header_layout"
         android:layout_below="@id/appBar"/>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_add_black_48dp"
+        android:layout_gravity="right|bottom"
+        android:elevation="6dp"
+        android:layout_below="@id/profile_header"
+        android:layout_marginTop="-40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"/>
 
-   <RelativeLayout
-       android:layout_width="wrap_content"
-       android:layout_height="match_parent"
-       android:background="@mipmap/profile_template"
-       android:layout_below="@id/profile_header"
-       android:layout_centerHorizontal="true"
-       android:id="@+id/template">
-
-       <ImageView
-           android:layout_width="@dimen/hand_size_w"
-           android:layout_height="@dimen/hand_size_h"
-           android:id="@+id/param_1_bool"
-           android:src="@mipmap/v"
-           android:layout_alignParentTop="true"
-           android:layout_alignParentLeft="true"
-           android:layout_alignParentStart="true"
-           android:layout_marginLeft="47dp"
-           android:layout_marginStart="47dp"
-           android:layout_marginTop="107dp" />
-
-       <ImageView
-           android:layout_width="@dimen/hand_size_w"
-           android:layout_height="@dimen/hand_size_h"
-           android:id="@+id/param_2_bool"
-           android:src="@mipmap/v"
-           android:layout_centerHorizontal="true"
-           android:layout_marginTop="107dp" />
-
-       <TextView
-           android:layout_width="@dimen/text_param_w"
-           android:layout_height="@dimen/text_param_h"
-           android:text="25 שח"
-           android:id="@+id/param_3_text"
-           android:layout_alignTop="@+id/param_2_bool"
-           android:layout_toRightOf="@id/param_2_bool"
-           android:layout_toEndOf="@id/param_2_bool"
-           android:gravity="center_vertical|center_horizontal"
-           android:layout_marginLeft="63dp" />
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:id="@+id/GridLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_header"
+        android:background="@color/default_background"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
 
-       <ImageView
-           android:layout_width="@dimen/hand_size_w"
-           android:layout_height="@dimen/hand_size_h"
-           android:id="@+id/param_4_bool"
-           android:src="@mipmap/v"
-           android:layout_below="@id/param_1_bool"
-           android:layout_alignStart="@id/param_1_bool"
-           android:layout_alignLeft="@+id/param_1_bool"
-           android:layout_marginTop="107dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:orientation="horizontal"
+            >
 
-       <ImageView
-           android:layout_width="@dimen/hand_size_w"
-           android:layout_height="@dimen/hand_size_h"
-           android:id="@+id/param_5_bool"
-           android:src="@mipmap/v"
-           android:layout_below="@id/param_2_bool"
-           android:layout_alignStart="@id/param_2_bool"
-           android:layout_alignLeft="@+id/param_2_bool"
-           android:layout_marginTop="107dp" />
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/rec_height"
+                android:background="#ffffff"
+                android:elevation="5dp"
+                android:layout_margin="@dimen/box_margin">
 
-       <ImageView
-           android:layout_width="@dimen/hand_size_w"
-           android:layout_height="@dimen/hand_size_h"
-           android:id="@+id/param_6_bool"
-           android:src="@mipmap/v"
-           android:layout_below="@id/param_3_text"
-           android:layout_alignStart="@id/param_3_text"
-           android:layout_alignLeft="@+id/param_3_text"
-           android:layout_marginTop="107dp"
-           android:layout_marginLeft="20dp"/>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/owel"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/work_until"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/box_text_size"/>
+
+                <ImageView
+                    android:layout_width="@dimen/hand_size_w"
+                    android:layout_height="@dimen/hand_size_h"
+                    android:id="@+id/param_1_bool"
+                    android:src="@mipmap/vv"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/rec_height"
+                android:background="#ffffff"
+                android:elevation="5dp"
+                android:layout_margin="@dimen/box_margin"
+                >
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/cert"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pay_for_ap"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/box_text_size"/>
+
+                <ImageView
+                    android:layout_width="@dimen/hand_size_w"
+                    android:layout_height="@dimen/hand_size_h"
+                    android:id="@+id/param_2_bool"
+                    android:src="@mipmap/vv"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/rec_height"
+                android:background="#ffffff"
+                android:elevation="5dp"
+                android:layout_margin="@dimen/box_margin"
+                >
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/money"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pay_for_ap"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/box_text_size"
+                 />
+
+                <TextView
+                    android:layout_width="@dimen/text_param_w"
+                    android:layout_height="@dimen/text_param_h"
+                    android:text="25 שח"
+                    android:id="@+id/param_3_text"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
 
 
-       <android.support.design.widget.FloatingActionButton
-           android:id="@+id/fab"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:src="@mipmap/ic_add_black_48dp"
-           android:layout_gravity="right|bottom"
-           android:elevation="6dp"
-           android:layout_marginTop="300dp"
-           android:layout_marginLeft="250dp"
-           android:layout_marginStart="250dp"/>
+        </LinearLayout>
 
-   </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:orientation="horizontal"
+            >
 
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/rec_height"
+                android:background="#ffffff"
+                android:elevation="5dp"
+                android:layout_margin="@dimen/box_margin">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/glass"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/atmo"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/box_text_size"/>
+
+                <ImageView
+                    android:layout_width="@dimen/hand_size_w"
+                    android:layout_height="@dimen/hand_size_h"
+                    android:id="@+id/param_4_bool"
+                    android:src="@mipmap/vv"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/rec_height"
+                android:background="#ffffff"
+                android:elevation="5dp"
+                android:layout_margin="@dimen/box_margin"
+                >
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/people"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pay_for_t"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/box_text_size"/>
+
+                <ImageView
+                    android:layout_width="@dimen/hand_size_w"
+                    android:layout_height="@dimen/hand_size_h"
+                    android:id="@+id/param_5_bool"
+                    android:src="@mipmap/vv"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/rec_height"
+                android:background="#ffffff"
+                android:elevation="5dp"
+                android:layout_margin="@dimen/box_margin"
+                >
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/bus"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/transport"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/box_text_size"
+                    />
+
+                <ImageView
+                    android:layout_width="@dimen/hand_size_w"
+                    android:layout_height="@dimen/hand_size_h"
+                    android:id="@+id/param_6_bool"
+                    android:src="@mipmap/vv"
+                    android:layout_gravity="center"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 
     <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -108,8 +269,10 @@
         android:layout_height="match_parent"
         android:id="@+id/profile_recycler"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/template">
+        android:layout_below="@id/GridLayout1">
     </android.support.v7.widget.RecyclerView>
+
+
 
 
 
