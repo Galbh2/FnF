@@ -31,9 +31,9 @@
         android:layout_centerHorizontal="true">
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@mipmap/x"
+            android:layout_width="@dimen/vv_w_feedback"
+            android:layout_height="@dimen/vv_w_feedback"
+            android:src="@mipmap/xx"
             />
 
         <RadioButton
@@ -47,9 +47,9 @@
             />
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@mipmap/v"
+            android:layout_width="@dimen/vv_w_feedback"
+            android:layout_height="@dimen/vv_w_feedback"
+            android:src="@mipmap/vv"
             />
 
         <RadioButton
