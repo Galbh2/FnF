@@ -50,7 +50,7 @@ public  abstract  class BaseTextFragment extends BaseFragment {
             public void afterTextChanged(Editable s) {
 
                 String string = s.toString();
-                Toast.makeText(getActivity(), string, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), string, Toast.LENGTH_LONG).show();
 
                 try {
                     double d = Double.valueOf(string);

@@ -3,6 +3,7 @@ package com.parse.starter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +47,7 @@ public class Param6Frag extends BaseFragment {
         super.onPause();
 
         if (m_Buttons != null) {
-            double grade = 1 / m_Buttons.length;
+            double grade = 1.0 / (double) m_Buttons.length;
             double sum = 0.0;
             for (MyRadioButton b : m_Buttons) {
                 if (b.getResult()) {
@@ -54,6 +55,7 @@ public class Param6Frag extends BaseFragment {
                 }
             }
             param.setNumData(sum);
+            Log.d("the sum is", String.valueOf(sum));
         }
 
     }

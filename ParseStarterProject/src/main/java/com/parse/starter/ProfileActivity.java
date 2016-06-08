@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
     private ImageView m_Param_1_Bool, m_Param_2_Bool, m_Param_4_Bool, m_Param_5_Bool, m_Param_6_Bool;
     private TextView m_Param_3_Text;
 
+    private LinearLayout m_Param_1_Layout, m_Param_2_Layout, m_Param_3_Layout, m_Param_4_Layout, m_Param_5_Layout, m_Param_6_Layout;
 
 
     @Override
@@ -83,7 +85,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(Utils.getParamInfo(index, this))
-                .setNeutralButton("Got it!", new DialogInterface.OnClickListener() {
+                .setNeutralButton("הבנתי !", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -106,6 +108,14 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
             fab = (FloatingActionButton) findViewById(R.id.fab);
             placeAdressTextView = (TextView) findViewById(R.id.address_text_view);
 
+            m_Param_1_Layout = (LinearLayout) findViewById(R.id.param_1_layout);
+            m_Param_2_Layout = (LinearLayout) findViewById(R.id.param_2_layout);
+            m_Param_3_Layout = (LinearLayout) findViewById(R.id.param_3_layout);
+            m_Param_4_Layout = (LinearLayout) findViewById(R.id.param_4_layout);
+            m_Param_5_Layout = (LinearLayout) findViewById(R.id.param_5_layout);
+            m_Param_6_Layout = (LinearLayout) findViewById(R.id.param_6_layout);
+
+
             int results[] = extras.getIntArray("RESULTS");
             logoImageView.setImageBitmap((Bitmap) extras.getParcelable("IMAGE"));
 
@@ -125,9 +135,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
             if (results != null) {
                 setBoolImage(m_Param_1_Bool, GradeCalc.intToBool(results[0]));
                 setBoolImage(m_Param_2_Bool, GradeCalc.intToBool(results[1]));
-                setBoolImage(m_Param_4_Bool, GradeCalc.intToBool(results[3]));
                 setBoolImage(m_Param_5_Bool, GradeCalc.intToBool(results[4]));
                 setBoolImage(m_Param_6_Bool, GradeCalc.intToBool(results[5]));
+
+                setAtmoImage(m_Param_4_Bool, GradeCalc.intToBool(results[3]));
 
                 m_Param_3_Text.setText(String.valueOf(results[2]));
             }
@@ -135,6 +146,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
             //Sets listeners
 
             fab.setOnClickListener(this);
+
+            m_Param_1_Layout.setOnClickListener(this);
+            m_Param_2_Layout.setOnClickListener(this);
+            m_Param_3_Layout.setOnClickListener(this);
+            m_Param_4_Layout.setOnClickListener(this);
+            m_Param_5_Layout.setOnClickListener(this);
+            m_Param_6_Layout.setOnClickListener(this);
 
             //Sets the name
             placeNameTextView.setText(extras.getString("NAME"));
@@ -163,6 +181,14 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
         }
     }
 
+
+    private void setAtmoImage(ImageView i_Image, boolean i_Value) {
+        if (i_Value) {
+            i_Image.setImageResource(R.mipmap.s_smile);
+        } else {
+            i_Image.setImageResource(R.mipmap.s_no_smile);
+        }
+    }
 
 
     private void testData() {
@@ -222,6 +248,24 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
             Intent intent = new Intent(this, FeedbackActivity.class);
             intent.putExtras(bundle);
             startActivity(intent);
+            return;
+        } else if (v == m_Param_1_Layout) {
+            showInfoDialog(2);
+            return;
+        } else if (v == m_Param_2_Layout) {
+            showInfoDialog(1);
+            return;
+        } else if (v == m_Param_3_Layout) {
+            showInfoDialog(0);
+            return;
+        } else if (v == m_Param_4_Layout) {
+            showInfoDialog(5);
+            return;
+        } else if (v == m_Param_5_Layout) {
+            showInfoDialog(4);
+            return;
+        } else if (v == m_Param_6_Layout) {
+            showInfoDialog(3);
         }
     }
 }

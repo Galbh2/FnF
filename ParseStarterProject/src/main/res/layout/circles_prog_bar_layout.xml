@@ -14,8 +14,8 @@
         android:layout_weight="1"/>
 
     <Button
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/circle_w"
+        android:layout_height="@dimen/circle_h"
         android:background="@drawable/ring_circle_toggle"
         android:id="@+id/circle_a"
         android:enabled="false"
@@ -27,8 +27,8 @@
         android:layout_weight="1"/>
 
     <Button
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/circle_w"
+        android:layout_height="@dimen/circle_h"
         android:background="@drawable/ring_circle_toggle"
         android:id="@+id/circle_b"
         android:enabled="false"
@@ -41,8 +41,8 @@
         android:layout_weight="1"/>
 
     <Button
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/circle_w"
+        android:layout_height="@dimen/circle_h"
         android:background="@drawable/ring_circle_toggle"
         android:id="@+id/circle_c"
         android:enabled="false"
@@ -55,8 +55,8 @@
         android:layout_weight="1"/>
 
     <Button
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/circle_w"
+        android:layout_height="@dimen/circle_h"
         android:background="@drawable/ring_circle_toggle"
         android:id="@+id/circle_d"
         android:enabled="false"
@@ -69,8 +69,8 @@
         android:layout_weight="1"/>
 
     <Button
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/circle_w"
+        android:layout_height="@dimen/circle_h"
         android:background="@drawable/ring_circle_toggle"
         android:id="@+id/circle_e"
         android:enabled="false"
@@ -83,8 +83,8 @@
 
 
     <Button
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/circle_w"
+        android:layout_height="@dimen/circle_h"
         android:background="@drawable/ring_circle_toggle"
         android:id="@+id/circle_f"
         android:enabled="false"

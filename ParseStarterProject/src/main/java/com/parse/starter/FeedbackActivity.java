@@ -1,5 +1,6 @@
 package com.parse.starter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,8 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.TileOverlay;
+import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.security.KeyStore;
@@ -106,7 +109,7 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-            private int lastPosition = 0;
+            private int lastPosition = -1;
 
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -139,6 +142,8 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
             public void onPageScrollStateChanged(int state) {
             }
         });
+
+        circles[0].setEnabled(true);
     }
 
     private void showMsg() {
@@ -151,6 +156,8 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
         switch (v.getId()) {
             case R.id.send_button:
                 sendFeedback();
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;
@@ -174,9 +181,11 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
 
         feedback.put("param_3_num", params[2].getNumData());
 
-        params[3].setNumData(0.75);
-
         feedback.put("param_4_num", params[3].getNumData());
+
+        ParseACL postAcl = new ParseACL(ParseUser.getCurrentUser());
+        postAcl.setPublicReadAccess(true);
+        feedback.setACL(postAcl);
 
         feedback.saveInBackground(new SaveCallback() {
             @Override

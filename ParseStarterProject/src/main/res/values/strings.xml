@@ -62,6 +62,7 @@
     <string name="pay_for_t">תשלום על ישיבות צוות</string>
     <string name="transport">תשלום על הוצאות נסיעה</string>
     <string name="param6_text">האווירה במקום</string>
+    <string name="payment">שכר ממוצע לשעה</string>
 
 
 </resources>

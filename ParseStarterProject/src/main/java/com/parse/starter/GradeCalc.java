@@ -50,6 +50,49 @@ public class GradeCalc {
 
     }
 
+    public static void calcParams(
+            boolean param_1_bool,
+            boolean param_2_bool,
+            boolean param_5_bool,
+            boolean param_6_bool,
+            double param_3_num,
+            double param_4_num,
+            final MyPlace i_Place) {
+
+        int[] results = new int[7];
+
+
+        int numOfReviews = 1;
+        int param1 = 0, param2 = 0, param5 = 0, param6 = 0;
+        double param3 = 0, param4 = 0;
+
+
+
+            param1 += boolToInt(param_1_bool);
+            param2 += boolToInt(param_2_bool);
+            param5 += boolToInt(param_5_bool);
+            param6 += boolToInt(param_6_bool);
+
+            param3 += param_3_num;
+            param4 +=param_4_num;
+
+
+        results[0] = getResult(param1, numOfReviews);
+        results[1] = getResult(param2, numOfReviews);
+        results[4] = getResult(param5, numOfReviews);
+        results[5] = getResult(param6, numOfReviews);
+
+        // avg wage
+        results[2] = (int) Math.ceil(param3 / numOfReviews);
+        // atmos
+        results[3] = calcAtmo(param4, numOfReviews);
+
+        calcFinalGrade(results);
+
+        i_Place.setResults(results);
+
+    }
+
     private static void calcFinalGrade(int[] i_Results) {
 
         double grade = 0;

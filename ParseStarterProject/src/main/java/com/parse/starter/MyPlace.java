@@ -17,6 +17,7 @@ public class MyPlace {
     private boolean openJobs;
     private Bitmap m_Image = null;
     private int[] m_Results;
+    private int imgId;
 
     /**
      *
@@ -26,14 +27,21 @@ public class MyPlace {
      *
      */
 
-
-
     public MyPlace (String id, String name, String address, String photoRef) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.photoRef = photoRef;
         openJobs = false;
+    }
+
+    public MyPlace (String id, String name, String address, String photoRef, int imgId) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.photoRef = photoRef;
+        openJobs = false;
+        this.imgId = imgId;
     }
 
     public MyPlace (String id, String name, String address, double grade, boolean openJobs) {
@@ -113,5 +121,9 @@ public class MyPlace {
 
     public void setResults(int[] m_Result) {
         this.m_Results = m_Result;
+    }
+
+    public int getImgId() {
+        return imgId;
     }
 }

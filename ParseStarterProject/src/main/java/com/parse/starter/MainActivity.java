@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
         SupportPlaceAutocompleteFragment autocompleteFragment = (SupportPlaceAutocompleteFragment)
                 getSupportFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
 
+        autocompleteFragment.setHint("בדוק את הג'וב...");
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
@@ -305,9 +306,25 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
         protected void onPostExecute(ArrayList<MyPlace> myPlaces) {
             m_PlaceListFromGoogle = myPlaces;
             Log.d("listSize", String.valueOf(myPlaces.size()));
+
+
+            //add mock
+            ArrayList<MyPlace> mock = Utils.getMock(MainActivity.this);
+
+            for (MyPlace place : mock) {
+                 place.setImage(
+                         BitmapFactory.decodeResource(getResources(), place.getImgId()
+                         )
+                 );
+            }
+
+            mock.addAll(m_PlaceListFromGoogle);
+            m_PlaceListFromGoogle = mock;
+
             setRecyclerView();
-            recyclerView.getAdapter().notifyDataSetChanged();
             testData();
+            recyclerView.getAdapter().notifyDataSetChanged();
+
             m_DownloadImageTask = new DownloadImageTask();
             m_DownloadImageTask.execute();
             calcGrades();
@@ -316,7 +333,7 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
 
     private void calcGrades() {
 
-        for (int i = 0; i < m_PlaceListFromGoogle.size(); i++) {
+        for (int i = 6; i < m_PlaceListFromGoogle.size(); i++) {
 
             final MyPlace place = m_PlaceListFromGoogle.get(i);
             final int index = i;

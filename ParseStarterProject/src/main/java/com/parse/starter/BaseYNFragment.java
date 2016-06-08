@@ -54,14 +54,14 @@ public abstract class BaseYNFragment extends BaseFragment implements RadioGroup.
         switch (checkedId) {
             case R.id.param_yes:
                 if (!mState) {
-                    Toast.makeText(getActivity(), "yes", Toast.LENGTH_LONG).show();
+                   // Toast.makeText(getActivity(), "yes", Toast.LENGTH_LONG).show();
                     param.setBoolData(true);
                    mState = true;
                 }
                 break;
             case R.id.param_no:
                 if (mState) {
-                    Toast.makeText(getActivity(), "no", Toast.LENGTH_LONG).show();
+                 //   Toast.makeText(getActivity(), "no", Toast.LENGTH_LONG).show();
                     param.setBoolData(false);
                     break;
                 }
