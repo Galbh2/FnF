@@ -8,14 +8,14 @@
   ~ of patent rights can be found in the PATENTS file in the same directory.
   -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.parse.starter" >
+    package="com.parse.jooba" >
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".StarterApplication"
+        android:name="com.parse.jooba.StarterApplication"
         android:allowBackup="true"
         android:icon="@mipmap/only_logo"
         android:label="@string/app_name"
@@ -33,33 +33,33 @@
 
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.parse.jooba.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
 
         <activity
-            android:name=".ProfileActivity"
+            android:name="com.parse.jooba.ProfileActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="com.parse.jooba.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"  />
+                android:value="com.parse.jooba.MainActivity"  />
         </activity>
 
         <activity
-            android:name=".FeedbackActivity"
+            android:name="com.parse.jooba.FeedbackActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="com.parse.jooba.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"  />
+                android:value="com.parse.jooba.MainActivity"  />
         </activity>
 
         <activity
-            android:name=".Splash"
+            android:name="com.parse.jooba.Splash"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:noHistory="true">
@@ -71,8 +71,8 @@
 
 
 
-        <service android:name=".LaunchNotificationService" />
-        <receiver android:name=".LaunchNotificationBroadcast">
+        <service android:name="com.parse.jooba.LaunchNotificationService" />
+        <receiver android:name="com.parse.jooba.LaunchNotificationBroadcast">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED">
                 </action>

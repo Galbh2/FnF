@@ -23,7 +23,7 @@
         android:layout_gravity="right|bottom"
         android:elevation="6dp"
         android:layout_below="@id/profile_header"
-        android:layout_marginTop="-40dp"
+        android:layout_marginTop="-60dp"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"/>
 

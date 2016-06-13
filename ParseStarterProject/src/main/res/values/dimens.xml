@@ -24,8 +24,8 @@
     <dimen name="rec_height">120dp</dimen>
     <dimen name="box_text_size">14sp</dimen>
     <dimen name="box_margin">10dp</dimen>
-    <dimen name="vv_w_feedback">60dp</dimen>
-    <dimen name="vv_h_feedback">60dp</dimen>
+    <dimen name="vv_w_feedback">45dp</dimen>
+    <dimen name="vv_h_feedback">45dp</dimen>
     <dimen name="atmo_text_size">20sp</dimen>
     <dimen name="emoji_w">35dp</dimen>
     <dimen name="emoji_h">35dp</dimen>
