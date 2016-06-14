@@ -43,6 +43,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class MainActivity extends AppCompatActivity implements PlaceAdapter.PlaceClickListener,
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
     private DownloadImageTask m_DownloadImageTask;
     private String mLatitude = "32.185533";
     private String mLongitud = "34.854347";
+    private AtomicBoolean m_UpdatedLocation = new AtomicBoolean(false);
 
 
     @Override
@@ -69,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
 
         buildGoogleApiClient();
 
-        new DownloadTask().execute(new String[2]);
         setToolBar();
 
 
@@ -236,6 +237,8 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
         bundle.putParcelable("IMAGE", p.getImage());
         bundle.putIntArray("RESULTS", p.getResults());
 
+        bundle.putStringArrayList("COMMETNS", p.getComments());
+
         Intent intent = new Intent(this, ProfileActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
@@ -254,6 +257,8 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
                 .addApi(Places.PLACE_DETECTION_API)
                 .addApi(LocationServices.API)
                 .enableAutoManage(this, this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
                 .build();
 
     }
@@ -267,6 +272,10 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
             if (lastLocation != null) {
                 mLatitude = String.valueOf(lastLocation.getLatitude());
                 mLongitud = String.valueOf(lastLocation.getLongitude());
+                Log.d("lati", mLatitude);
+                Log.d("long", mLongitud);
+
+                new DownloadTask().execute();
             }
         } catch (SecurityException e) {
             e.printStackTrace();
@@ -275,14 +284,14 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
 
     @Override
     public void onConnectionSuspended(int i) {
-
+        Toast.makeText(this, "הגי' פי אס שלי עובד ?", Toast.LENGTH_SHORT);
     }
 
 
-    private class DownloadTask extends AsyncTask<String[], Integer, ArrayList<MyPlace>> {
+    private class DownloadTask extends AsyncTask<Void, Integer, ArrayList<MyPlace>> {
 
         @Override
-        protected ArrayList<MyPlace> doInBackground(String[]... params) {
+        protected ArrayList<MyPlace> doInBackground(Void... params) {
             Log.d("DownloadTask", "started");
             Log.d("lati", mLatitude);
             Log.d("long", mLongitud);

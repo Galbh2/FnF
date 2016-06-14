@@ -6,7 +6,7 @@ package com.parse.jooba;
 public class Param {
 
     private int type; //0 for yes/no question, 1 for numeric question
-    private String body;
+    private String body = "";
     private boolean boolData;
     private Double numData;
 

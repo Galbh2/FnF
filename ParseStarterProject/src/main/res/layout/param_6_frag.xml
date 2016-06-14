@@ -20,179 +20,213 @@
     android:layout_marginTop="20dp"
     />
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/e1">
+        android:weightSum="2"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
 
-        <TextView
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="אחמ''ש על מלא ?"
-            android:autoText="false"
-            android:textDirection="rtl"
-            android:gravity="right"
-            android:id="@+id/manager"
-            android:textSize="@dimen/atmo_text_size"
-            android:textColor="@color/primaryColorDark"
-            />
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+
+            android:id="@+id/r1"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView"
+                android:layout_weight="1"
+                android:id="@+id/e1"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="אחמ''ש על מלא ?"
+                    android:autoText="false"
+                    android:textDirection="rtl"
+                    android:id="@+id/manager"
+                    android:textSize="@dimen/atmo_text_size"
+                    android:textColor="@color/primaryColorDark"
+                    />
 
 
-        <ImageView
-            android:layout_width="@dimen/emoji_w"
-            android:layout_height="@dimen/emoji_h"
-            android:src="@mipmap/s_angel"
-            android:layout_below="@id/manager"
-            android:layout_alignLeft="@id/manager"
-            android:id="@+id/s_angel_img"
-            android:layout_marginTop="20dp"
-            />
+                <ImageView
+                    android:layout_width="@dimen/emoji_w"
+                    android:layout_height="@dimen/emoji_h"
+                    android:src="@mipmap/s_angel"
+                    android:layout_below="@id/manager"
+                    android:layout_alignLeft="@id/manager"
+                    android:id="@+id/s_angel_img"
+                    android:layout_marginTop="20dp"
+                    />
 
 
-        <ImageView
-            android:layout_width="@dimen/emoji_w"
-            android:layout_height="@dimen/emoji_h"
-            android:src="@mipmap/s_boss"
-            android:layout_below="@id/manager"
-            android:id="@+id/s_boss_img"
-            android:layout_marginTop="20dp"
-            android:layout_alignRight="@id/manager"
-            />
-    </RelativeLayout>
+                <ImageView
+                    android:layout_width="@dimen/emoji_w"
+                    android:layout_height="@dimen/emoji_h"
+                    android:src="@mipmap/s_boss"
+                    android:layout_below="@id/manager"
+                    android:id="@+id/s_boss_img"
+                    android:layout_marginTop="20dp"
+                    android:layout_alignRight="@id/manager"
+                    />
+            </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView"
-        android:id="@+id/e2"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView"
+                android:id="@+id/e2"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+            >
 
-        <TextView
-            android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="האנשים סבבה?"
+                    android:autoText="false"
+                    android:textDirection="rtl"
+                    android:gravity="right"
+                    android:id="@+id/people"
+                    android:textSize="@dimen/atmo_text_size"
+                    android:textColor="@color/primaryColorDark"
+                    />
+
+
+                <ImageView
+                    android:layout_width="@dimen/emoji_w"
+                    android:layout_height="@dimen/emoji_h"
+                    android:src="@mipmap/s_sunglesses"
+                    android:layout_below="@id/people"
+                    android:layout_alignLeft="@id/people"
+                    android:id="@+id/s_sunglesses_img"
+                    android:layout_marginTop="20dp"
+                    />
+
+
+                <ImageView
+                    android:layout_width="@dimen/emoji_w"
+                    android:layout_height="@dimen/emoji_h"
+                    android:src="@mipmap/s_pile"
+                    android:layout_below="@id/people"
+                    android:id="@+id/s_pile_img"
+                    android:layout_marginTop="20dp"
+                    android:layout_alignRight="@id/people"
+                    />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="האנשים סבבה?"
-            android:autoText="false"
-            android:textDirection="rtl"
-            android:gravity="right"
-            android:id="@+id/people"
-            android:textSize="@dimen/atmo_text_size"
-            android:textColor="@color/primaryColorDark"
-            />
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:layout_below="@id/r1"
+            android:layout_weight="1"
+            >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/e1"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="פינוקים וצ'ופרים?"
+                    android:autoText="false"
+                    android:textDirection="rtl"
+                    android:gravity="right"
+                    android:id="@+id/goodtime"
+                    android:textSize="@dimen/atmo_text_size"
+                    android:textColor="@color/primaryColorDark"
+                    />
 
 
-        <ImageView
-            android:layout_width="@dimen/emoji_w"
-            android:layout_height="@dimen/emoji_h"
-            android:src="@mipmap/s_sunglesses"
-            android:layout_below="@id/people"
-            android:layout_alignLeft="@id/people"
-            android:id="@+id/s_sunglesses_img"
-            android:layout_marginTop="20dp"
-            />
+                <ImageView
+                    android:layout_width="@dimen/emoji_w"
+                    android:layout_height="@dimen/emoji_h"
+                    android:src="@mipmap/s_eye"
+                    android:layout_below="@id/goodtime"
+                    android:layout_alignLeft="@id/goodtime"
+                    android:id="@+id/s_eye_img"
+                    android:layout_marginTop="20dp"
+
+                    />
 
 
-        <ImageView
-            android:layout_width="@dimen/emoji_w"
-            android:layout_height="@dimen/emoji_h"
-            android:src="@mipmap/s_pile"
-            android:layout_below="@id/people"
-            android:id="@+id/s_pile_img"
-            android:layout_marginTop="20dp"
-            android:layout_alignRight="@id/people"
-            />
-    </RelativeLayout>
+                <ImageView
+                    android:layout_width="@dimen/emoji_w"
+                    android:layout_height="@dimen/emoji_h"
+                    android:src="@mipmap/s_sad"
+                    android:layout_below="@id/goodtime"
+                    android:id="@+id/s_sad_img"
+                    android:layout_alignRight="@id/goodtime"
+                    android:layout_marginTop="20dp"
+                    />
+            </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/e1"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/e2"
+                android:id="@+id/e4"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="פינוקים וצ'ופרים?"
-            android:autoText="false"
-            android:textDirection="rtl"
-            android:gravity="right"
-            android:id="@+id/goodtime"
-            android:textSize="@dimen/atmo_text_size"
-            android:textColor="@color/primaryColorDark"
-            />
-
-
-        <ImageView
-            android:layout_width="@dimen/emoji_w"
-            android:layout_height="@dimen/emoji_h"
-            android:src="@mipmap/s_eye"
-            android:layout_below="@id/goodtime"
-            android:layout_alignLeft="@id/goodtime"
-            android:id="@+id/s_eye_img"
-            android:layout_marginTop="20dp"
-            />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ימי גיבוש וכיף?"
+                    android:autoText="false"
+                    android:textDirection="rtl"
+                    android:gravity="right"
+                    android:id="@+id/day"
+                    android:textSize="@dimen/atmo_text_size"
+                    android:textColor="@color/primaryColorDark"
+                    />
 
 
-        <ImageView
-            android:layout_width="@dimen/emoji_w"
-            android:layout_height="@dimen/emoji_h"
-            android:src="@mipmap/s_sad"
-            android:layout_below="@id/goodtime"
-            android:id="@+id/s_sad_img"
-            android:layout_marginTop="20dp"
-            android:layout_alignRight="@id/goodtime"
-            />
-    </RelativeLayout>
+                <ImageView
+                    android:layout_width="@dimen/emoji_w"
+                    android:layout_height="@dimen/emoji_h"
+                    android:src="@mipmap/s_present"
+                    android:layout_below="@id/day"
+                    android:layout_alignLeft="@id/day"
+                    android:id="@+id/s_present_img"
+                    android:layout_marginTop="20dp"
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/e2"
-        android:id="@+id/e4"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ימי גיבוש וכיף?"
-            android:autoText="false"
-            android:textDirection="rtl"
-            android:gravity="right"
-            android:id="@+id/day"
-            android:textSize="@dimen/atmo_text_size"
-            android:textColor="@color/primaryColorDark"
-            />
+                    />
 
 
-        <ImageView
-            android:layout_width="@dimen/emoji_w"
-            android:layout_height="@dimen/emoji_h"
-            android:src="@mipmap/s_present"
-            android:layout_below="@id/day"
-            android:layout_alignLeft="@id/day"
-            android:id="@+id/s_present_img"
-            android:layout_marginTop="20dp"
-            />
+                <ImageView
+                    android:layout_width="@dimen/emoji_w"
+                    android:layout_height="@dimen/emoji_h"
+                    android:src="@mipmap/s_sleepy"
+                    android:layout_below="@id/day"
+                    android:id="@+id/s_sleepy_img"
+                    android:layout_marginTop="20dp"
+                    android:layout_alignRight="@id/day"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
 
-
-        <ImageView
-            android:layout_width="@dimen/emoji_w"
-            android:layout_height="@dimen/emoji_h"
-            android:src="@mipmap/s_sleepy"
-            android:layout_below="@id/day"
-            android:id="@+id/s_sleepy_img"
-            android:layout_marginTop="20dp"
-            android:layout_alignRight="@id/day"
-            />
-    </RelativeLayout>
-
+    </LinearLayout>
 </RelativeLayout>

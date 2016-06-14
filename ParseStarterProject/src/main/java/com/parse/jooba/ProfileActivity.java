@@ -43,6 +43,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
 
     private LinearLayout m_Param_1_Layout, m_Param_2_Layout, m_Param_3_Layout, m_Param_4_Layout, m_Param_5_Layout, m_Param_6_Layout;
 
+    private ArrayList<String> m_Comments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,6 +162,15 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
 
             placeAdressTextView.setText(extras.getString("ADDRESS"));
 
+            // Sets the comments list
+
+            m_Comments = extras.getStringArrayList("COMMETNS");
+
+            if (m_Comments == null) {
+                m_Comments = new ArrayList<>(1);
+                m_Comments.add("לא נמצאו תגובות");
+            }
+
             //Sets the job icon
             //    if (!extras.getBoolean("JOB")) {
             //      openJobImageView.setVisibility(View.INVISIBLE);
@@ -203,7 +213,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileAdapter
 
         recyclerView = (RecyclerView) findViewById(R.id.profile_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new ProfileAdapter(this));
+        recyclerView.setAdapter(new ProfileAdapter(this, m_Comments));
 
     }
 

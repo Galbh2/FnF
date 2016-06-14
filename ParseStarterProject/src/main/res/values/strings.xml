@@ -63,6 +63,8 @@
     <string name="transport">תשלום על הוצאות נסיעה</string>
     <string name="param6_text">האווירה במקום</string>
     <string name="payment">שכר ממוצע לשעה</string>
+    <string name="param7_text">העובדים מספרים ש...</string>
+    <string name="param7_hint">ספר לנו מה אתה חושב על מקום העבודה שלך...</string>
 
 
 </resources>

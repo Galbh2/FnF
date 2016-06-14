@@ -44,9 +44,10 @@ public  abstract  class BaseTextFragment extends BaseFragment {
             @Override
             public void afterTextChanged(Editable s) {
 
-                String string = s.toString();
+               // String string = s.toString();
                 //Toast.makeText(getActivity(), string, Toast.LENGTH_LONG).show();
 
+                /*
                 try {
                     double d = Double.valueOf(string);
                     param.setNumData(d);
@@ -54,7 +55,9 @@ public  abstract  class BaseTextFragment extends BaseFragment {
                     e.printStackTrace();
                     param.setNumData(0.0);
                 }
+                */
 
+                param.setBody(s.toString());
 
 
             }

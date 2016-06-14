@@ -22,8 +22,9 @@
         android:src="@mipmap/ic_add_black_48dp"
         android:layout_gravity="right|bottom"
         android:elevation="6dp"
-        android:layout_below="@id/profile_header"
-        android:layout_marginTop="-60dp"
+        android:layout_alignBottom="@id/profile_header"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="-24dp"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"/>
 
@@ -33,11 +34,11 @@
         android:id="@+id/GridLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/profile_header"
         android:background="@color/default_background"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/profile_header">
 
 
         <LinearLayout
@@ -152,7 +153,6 @@
                     android:layout_marginTop="6dp"/>
             </LinearLayout>
 
-
         </LinearLayout>
 
         <LinearLayout
@@ -191,7 +191,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:id="@+id/param_4_bool"
-                    android:src="@mipmap/vv"
+                    android:src="@mipmap/s_smile"
                     android:layout_gravity="center"/>
             </LinearLayout>
 
@@ -270,16 +270,16 @@
 
     </LinearLayout>
 
-
     <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/profile_recycler"
-        android:layout_alignParentLeft="true"
+        android:layout_height="200dp"
         android:layout_below="@id/GridLayout1"
-        android:background="@color/accentColor">
-    </android.support.v7.widget.RecyclerView>
+        android:id="@+id/profile_recycler"
+        android:background="@color/accentColor"
 
+        >
+
+    </android.support.v7.widget.RecyclerView>
 
 
 

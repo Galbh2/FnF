@@ -31,6 +31,7 @@
         android:id="@+id/param_edit_text"
         android:layout_below="@+id/textView"
         android:padding="30dp"
+        android:maxLength="2"
         android:hint="@string/param2_default"
         >
 

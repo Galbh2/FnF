@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:weightSum="7"
+    android:weightSum="8"
     android:background="@color/accentColor"
     android:padding="10dp"
 
@@ -87,6 +87,20 @@
         android:layout_height="@dimen/circle_h"
         android:background="@drawable/ring_circle_toggle"
         android:id="@+id/circle_f"
+        android:enabled="false"
+        />
+
+    <android.widget.Space
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+
+    <Button
+        android:layout_width="@dimen/circle_w"
+        android:layout_height="@dimen/circle_h"
+        android:background="@drawable/ring_circle_toggle"
+        android:id="@+id/circle_g"
         android:enabled="false"
         />
 

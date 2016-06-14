@@ -26,7 +26,7 @@ import com.parse.SaveCallback;
  */
 public class FeedbackActivity extends AppCompatActivity implements BaseFragment.ParentActions, View.OnClickListener {
 
-    public static final int NUM_OF_PARAMS = 6;
+    public static final int NUM_OF_PARAMS = 7;
     private Toolbar toolBar;
     ViewPager viewPager;
     final Param[] params = new Param[NUM_OF_PARAMS];
@@ -71,6 +71,7 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
         circles[3] = (Button) findViewById(R.id.circle_d);
         circles[4] = (Button) findViewById(R.id.circle_e);
         circles[5] = (Button) findViewById(R.id.circle_f);
+        circles[6] = (Button) findViewById(R.id.circle_g);
 
         m_SendButton = (Button) findViewById(R.id.send_button);
         m_SendButton.setOnClickListener(this);
@@ -118,9 +119,9 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
 
                 // send button logic
 
-                if (position == 5) {
+                if (position == 6) {
                     m_SendButton.setVisibility(View.VISIBLE);
-                } else if (lastPosition == 5) {
+                } else if (lastPosition == 6) {
                     m_SendButton.setVisibility(View.INVISIBLE);
                 }
 
@@ -144,7 +145,7 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
     }
 
     private void showMsg() {
-        Toast.makeText(this, "Send !", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "תודה !", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -154,6 +155,7 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
             case R.id.send_button:
                 sendFeedback();
                 Intent intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 break;
             default:
@@ -176,9 +178,13 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
         feedback.put("param_5_bool", params[4].getBoolData());
         feedback.put("param_6_bool", params[5].getBoolData());
 
-        feedback.put("param_3_num", params[2].getNumData());
+        feedback.put("param_3_text", params[2].getBody());
 
         feedback.put("param_4_num", params[3].getNumData());
+
+        // comment
+
+        feedback.put("param_7_text", params[6].getBody());
 
         ParseACL postAcl = new ParseACL(ParseUser.getCurrentUser());
         postAcl.setPublicReadAccess(true);
@@ -193,7 +199,7 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
             }
         });
 
-        Toast.makeText(this, "Sent!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "תודה !", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -206,6 +212,7 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
         private Fragment frag4;
         private Fragment frag5;
         private Fragment frag6;
+        private Fragment frag7;
 
         public PageAdapter(FragmentManager fm) {
             super(fm);
@@ -216,6 +223,7 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
             frag6 = new Param4Frag();
             frag5 = new Param5Frag();
             frag4 = new Param6Frag();
+            frag7 = new Param7Frag();
 
             Bundle b1 = new Bundle();
             Bundle b2 = new Bundle();
@@ -223,6 +231,7 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
             Bundle b4 = new Bundle();
             Bundle b5 = new Bundle();
             Bundle b6 = new Bundle();
+            Bundle b7 = new Bundle();
 
             b1.putInt("index", 0);
             b2.putInt("index", 1);
@@ -230,6 +239,7 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
             b4.putInt("index", 3);
             b5.putInt("index", 4);
             b6.putInt("index", 5);
+            b7.putInt("index", 6);
 
             frag1.setArguments(b1);
             frag2.setArguments(b2);
@@ -237,6 +247,7 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
             frag4.setArguments(b4);
             frag5.setArguments(b5);
             frag6.setArguments(b6);
+            frag7.setArguments(b7);
 
 
         }
@@ -257,6 +268,8 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
                     return frag5;
                 case 5:
                     return frag6;
+                case 6:
+                    return frag7;
             }
 
             return null;
@@ -283,6 +296,8 @@ public class FeedbackActivity extends AppCompatActivity implements BaseFragment.
                     return "5";
                 case 5:
                     return "6";
+                case 6:
+                    return "7";
                 default:
                     return "n/a";
             }

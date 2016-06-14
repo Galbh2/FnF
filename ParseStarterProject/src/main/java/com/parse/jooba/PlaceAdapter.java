@@ -56,8 +56,11 @@ public class PlaceAdapter extends RecyclerView.Adapter <PlaceAdapter.MyViewHolde
         holder.addressTextView.setText(myPlace.getAddress());
 
         if (myPlace.getGrade() == 10) {
-            holder.gradeTextView.setText(String.format("%.0f", myPlace.getGrade()));
-        } else {
+            holder.gradeTextView.setText(String.format("%.0f ", myPlace.getGrade()));
+        } else if (myPlace.getGrade() == -1) {
+            holder.gradeTextView.setText("?  ");
+        }
+        else {
             holder.gradeTextView.setText(String.format("%.1f", myPlace.getGrade()));
         }
 

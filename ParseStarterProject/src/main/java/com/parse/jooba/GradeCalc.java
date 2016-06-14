@@ -30,8 +30,17 @@ public class GradeCalc {
             param5 += boolToInt(object.getBoolean("param_5_bool"));
             param6 += boolToInt(object.getBoolean("param_6_bool"));
 
-            param3 += object.getDouble("param_3_num");
+            param3 += Integer.valueOf(object.getString("param_3_text"));
+
             param4 += object.getDouble("param_4_num");
+
+            // comments
+
+            String comment = object.getString("param_7_text");
+
+            if (comment != null && !comment.equals("")) {
+                i_Place.addComment(comment);
+            }
         }
 
         results[0] = getResult(param1, numOfReviews);

@@ -16,6 +16,7 @@
         android:id="@+id/name_text_view"
         android:textStyle="bold"
         android:textSize="20sp"
+        android:maxLength="13"
         android:fontFamily="sans-serif-light"
         android:layout_marginTop="5dp"
         android:layout_alignParentTop="true"

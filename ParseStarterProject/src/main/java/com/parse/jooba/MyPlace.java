@@ -2,6 +2,8 @@ package com.parse.jooba;
 
 import android.graphics.Bitmap;
 
+import java.util.ArrayList;
+
 /**
  * This class is the data object for holding one place.
  */
@@ -17,6 +19,7 @@ public class MyPlace {
     private Bitmap m_Image = null;
     private int[] m_Results;
     private int imgId;
+    private ArrayList<String> m_Comments = new ArrayList<>(3);
 
     /**
      *
@@ -46,6 +49,19 @@ public class MyPlace {
     public MyPlace (String id, String name, String address, double grade, boolean openJobs) {
         this(id, name, address, null);
         this.openJobs = openJobs;
+    }
+
+    public void addComment(String i_Comment) {
+        m_Comments.add(i_Comment);
+    }
+
+    public ArrayList<String> getComments(){
+
+        if (m_Comments.size() == 0) {
+            m_Comments.add("לא נמצאו תגובות...");
+        }
+
+        return m_Comments;
     }
 
     public String getId() {
