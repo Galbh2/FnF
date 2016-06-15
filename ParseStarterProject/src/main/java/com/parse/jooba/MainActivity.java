@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
     private final Fire m_NetManager = new Fire();
     private ParseQuery<ParseObject> m_ParseQuery;
     private DownloadImageTask m_DownloadImageTask;
+    private DownloadTask m_DownloadTask;
     private String mLatitude = "32.185533";
     private String mLongitud = "34.854347";
     private AtomicBoolean m_UpdatedLocation = new AtomicBoolean(false);
@@ -73,7 +74,8 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
 
         setToolBar();
 
-
+        m_DownloadTask = new DownloadTask();
+        m_DownloadTask.execute();
         setAutoCompleteFrag();
 
         //ParseObject testObject = new ParseObject("TestObject");
@@ -83,6 +85,14 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
         //Intent intent = new Intent(this, LaunchNotificationBroadcast.class);
         //sendBroadcast(intent);
 
+    }
+
+    private void stopDownloadTask() {
+        if (m_DownloadTask != null &&
+                m_DownloadTask.getStatus() == AsyncTask.Status.RUNNING) {
+
+            m_DownloadTask.cancel(true);
+        }
     }
 
     @Override
@@ -96,6 +106,8 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
         mGoogleApiClient.disconnect();
         stopParseWork();
         stopImgWork();
+        stopDownloadTask();
+        m_UpdatedLocation.set(false);
         super.onStop();
     }
 
@@ -124,13 +136,18 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
     }
 
     private void stopImgWork() {
-        if (m_DownloadImageTask.getStatus() == AsyncTask.Status.RUNNING) {
+        if (m_DownloadImageTask != null &&
+            m_DownloadImageTask.getStatus() == AsyncTask.Status.RUNNING) {
+
             m_DownloadImageTask.cancel(true);
         }
     }
 
     private void stopParseWork() {
-        m_ParseQuery.cancel();
+        if (m_ParseQuery != null) {
+            m_ParseQuery.cancel();
+        }
+
     }
 
     private void testData() {
@@ -182,7 +199,9 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
     }
 
     private void reset() {
-        // getPlacesFromCloud();
+        this.onConnected(null);
+        m_DownloadTask = new DownloadTask();
+        m_DownloadTask.execute();
     }
 
     private void setRecyclerView() {
@@ -209,6 +228,9 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        } else if (id == R.id.action_refresh) {
+            reset();
             return true;
         }
 
@@ -247,7 +269,9 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-
+        stopDownloadTask();
+        Log.d("loading_error", "connection_failed");
+        Toast.makeText(this, "הג'י פי אס שלי מחובר ?", Toast.LENGTH_LONG);
     }
 
     protected void buildGoogleApiClient() {
@@ -275,11 +299,13 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
                 Log.d("lati", mLatitude);
                 Log.d("long", mLongitud);
 
-                new DownloadTask().execute();
+
             }
         } catch (SecurityException e) {
             e.printStackTrace();
         }
+
+        m_UpdatedLocation.set(true);
     }
 
     @Override
@@ -292,10 +318,24 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
 
         @Override
         protected ArrayList<MyPlace> doInBackground(Void... params) {
+
+            while (!m_UpdatedLocation.get()) {
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
             Log.d("DownloadTask", "started");
             Log.d("lati", mLatitude);
             Log.d("long", mLongitud);
-            String data = m_NetManager.doRequest("3000", "restaurant", mLatitude, mLongitud);
+            String data = m_NetManager.doRequest("2000", "restaurant", mLatitude, mLongitud);
+
+            if (data == null) {
+                return new ArrayList<MyPlace>();
+            }
+
             return Fire.fromJsonToObjects(data);
         }
 

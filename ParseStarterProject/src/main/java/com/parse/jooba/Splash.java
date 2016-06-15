@@ -3,6 +3,7 @@ package com.parse.jooba;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -30,12 +31,34 @@ public class Splash extends AppCompatActivity {
 
         Log.d("callbackg", "onCreate");
 
-        circles[0] = (ImageView) findViewById(R.id.circle_a);
-        circles[1] = (ImageView) findViewById(R.id.circle_b);
-        circles[2] = (ImageView) findViewById(R.id.circle_c);
+      //  circles[0] = (ImageView) findViewById(R.id.circle_a);
+      //  circles[1] = (ImageView) findViewById(R.id.circle_b);
+      //  circles[2] = (ImageView) findViewById(R.id.circle_c);
 
        // animation = new AnimationTask().execute();
-        getPlacesFromCloud();
+
+    }
+
+    @Override
+    protected void onStart() {
+
+
+        super.onStart();
+
+        new CountDownTimer(2000, 1000) {
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                Intent intent = new Intent(Splash.this, MainActivity.class);
+                startActivity(intent);
+            }
+        }.start();
+
 
     }
 

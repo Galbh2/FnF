@@ -31,7 +31,7 @@ public class Fire {
   //  private String default_query = "location=32.185533,34.854347&radius=4000&type=restaurant&key=AIzaSyAfuZD5FPkCHj5cQ16_RuCDsQ7pQ-zVpiQ";
     private String NEXT_PAGE = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=%s&";
     private final String USER_AGENT = "Mozilla/5.0";
-    private final int WAIT = 700;
+    private final int WAIT = 300;
 
     private String m_NextPageToken;
     private long m_LastRequestTime = 0;
