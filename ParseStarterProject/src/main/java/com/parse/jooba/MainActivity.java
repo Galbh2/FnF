@@ -9,6 +9,8 @@
 package com.parse.jooba;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
@@ -49,7 +51,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class MainActivity extends AppCompatActivity implements PlaceAdapter.PlaceClickListener,
         GoogleApiClient.OnConnectionFailedListener, ConnectionCallbacks {
 
-    final static int LIMIT = 50;
+    final static int LIMIT = 20;
     private Toolbar toolBar;
     private RecyclerView recyclerView;
     public static ArrayList<MyPlace> placesList = new ArrayList<MyPlace>();
@@ -208,6 +210,7 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
 
         recyclerView = (RecyclerView) findViewById(R.id.places_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setItemViewCacheSize(LIMIT);
         recyclerView.setAdapter(new PlaceAdapter(this, m_PlaceListFromGoogle));
 
     }
@@ -228,7 +231,10 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            String version = getVersion();
+            if (version != null) {
+                Toast.makeText(this, "Version number: " + version, Toast.LENGTH_SHORT);
+            }
         } else if (id == R.id.action_refresh) {
             reset();
             return true;
@@ -243,6 +249,21 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
     private void setToolBar() {
         toolBar = (Toolbar) findViewById(R.id.appBar);
         setSupportActionBar(toolBar);
+    }
+
+
+    private String getVersion() {
+
+        String version = null;
+
+        try {
+            version = this.getPackageManager()
+                    .getPackageInfo(this.getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return version;
     }
 
     @Override
@@ -298,11 +319,12 @@ public class MainActivity extends AppCompatActivity implements PlaceAdapter.Plac
                 mLongitud = String.valueOf(lastLocation.getLongitude());
                 Log.d("lati", mLatitude);
                 Log.d("long", mLongitud);
-
+                Log.d("on_connected", "refreshed location");
 
             }
         } catch (SecurityException e) {
             e.printStackTrace();
+            Log.d("connection_error", e.getMessage());
         }
 
         m_UpdatedLocation.set(true);

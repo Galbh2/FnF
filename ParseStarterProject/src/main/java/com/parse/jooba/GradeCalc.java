@@ -1,5 +1,7 @@
 package com.parse.jooba;
 
+import android.util.Log;
+
 import com.parse.ParseObject;
 
 import java.util.List;
@@ -19,18 +21,28 @@ public class GradeCalc {
             return;
         }
 
-        int numOfReviews = i_Input.size();
+        // int numOfReviews = i_Input.size();
+        int numOfReviews = 0;
+
         int param1 = 0, param2 = 0, param5 = 0, param6 = 0;
         double param3 = 0, param4 = 0;
 
         for (ParseObject object : i_Input) {
+
+            // Handles an entry that has no data on the wage per hour
+            try {
+                param3 += Integer.valueOf(object.getString("param_3_text"));
+            } catch (NumberFormatException e) {
+                Log.d("GradeCalc", "Missing wage per hour, skip");
+                continue;
+            }
 
             param1 += boolToInt(object.getBoolean("param_1_bool"));
             param2 += boolToInt(object.getBoolean("param_2_bool"));
             param5 += boolToInt(object.getBoolean("param_5_bool"));
             param6 += boolToInt(object.getBoolean("param_6_bool"));
 
-            param3 += Integer.valueOf(object.getString("param_3_text"));
+
 
             param4 += object.getDouble("param_4_num");
 
@@ -41,6 +53,8 @@ public class GradeCalc {
             if (comment != null && !comment.equals("")) {
                 i_Place.addComment(comment);
             }
+
+            numOfReviews++;
         }
 
         results[0] = getResult(param1, numOfReviews);
